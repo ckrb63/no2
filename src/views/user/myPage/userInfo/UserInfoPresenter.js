@@ -1,5 +1,9 @@
 import React, {useState, useEffect} from 'react';
+import styled from 'styled-components';
 import {checkId, checkEmail, checkNickname, checkPassword, checkNameLength, checkPhoneNumber} from "../../validCheck/ValidCheck";
+// import classes from './UserInfoPresenter.module.css';
+
+
 
 
 const EditUserForm = (props) => {
@@ -51,6 +55,7 @@ const EditUserForm = (props) => {
     const handleSubmit = e => {
         e.preventDefault();
         if (props.name && props.password && props.email && props.nickname && props.phoneNumber) props.updateUser(props);
+        props.onModify();
     }
     const buttonStyle = formIsValid ? "button-primary" : "";
     // const nameBlurHandler = () => {
@@ -61,7 +66,7 @@ const EditUserForm = (props) => {
     return (
         <form>
             <label>이름</label>
-            <input className="u-full-width" type="text" value={props.name} name="name" onChange={props.nameChange} onBlur={nameBlurHandler}/>
+            <input type="text" value={props.name} name="name" onChange={props.nameChange} onBlur={nameBlurHandler}/>
             <label>비밀번호</label>
             <input className="u-full-width" type="password" value={props.password} name="password" onChange={props.passwordChange} onBlur={passwordBlurHandler}/>
             <label>비밀번호확인</label>
