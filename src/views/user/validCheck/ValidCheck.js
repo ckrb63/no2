@@ -109,10 +109,9 @@ function checkPassword(password, email, nickname, name) {
 
 function checkPasswordConfim(password, passwordConfirm){
   if (password !== passwordConfirm) {
-    //비밀번호 비밀번호 확인
-    alert("비번다름");
     return false;
   }
+  return true;
 }
 
 function checkNameLength(name) {

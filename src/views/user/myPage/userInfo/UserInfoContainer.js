@@ -69,25 +69,25 @@ function UserInfoContainer() {
     setEditing(false);
   };
   function validId(){
-    checkId(users.email, url);
+    return checkId(enteredEmail, url);
   }
   function validEmail(){
-    checkEmail(users.email);
+    return checkEmail(enteredEmail);
   }
   function validNickname(){
-    checkNickname(users.nickname, url);
+    return checkNickname(enteredNickName, url);
   }
   function validPassword(){
-    checkPassword(enteredPassword,enteredEmail,enteredNickName,enteredName);
+    return checkPassword(enteredPassword,enteredEmail,enteredNickName,enteredName);
   }
   function validPasswordConfirm(){
-    checkPasswordConfim(enteredPassword, enteredPasswordConfirm);
+    return checkPasswordConfim(enteredPassword, enteredPasswordConfirm);
   }
   function validNameLength(){
-    checkNameLength(enteredName);
+    return checkNameLength(enteredName);
   }
   function validPhoneNumber(){
-    checkPhoneNumber(users.phoneNumber);
+    return checkPhoneNumber(enteredPhone);
   }
 
 //   const onModify= ()=>{
