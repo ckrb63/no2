@@ -5,7 +5,7 @@ import profile from "./asset/ProfilePicture.png";
 import styled from "styled-components";
 import "./asset/UserInfoPresenter.css"
 // import axios from 'axios'
-import {checkId, checkEmail, checkNickname, checkPassword, checkNameLength, checkPhoneNumber} from "../../validCheck/ValidCheck";
+import {checkId, checkEmail, checkNickname, checkPassword, checkNameLength, checkPhoneNumber, checkPasswordConfim} from "../../validCheck/ValidCheck";
 const url= "https://77e1dca6-cd01-4930-ae25-870e7444cc55.mock.pstmn.io";
 
 const Profile = styled.img`
@@ -78,7 +78,10 @@ function UserInfoContainer() {
     checkNickname(users.nickname, url);
   }
   function validPassword(){
-    checkPassword(enteredPassword,enteredPasswordConfirm, enteredEmail,enteredNickName,enteredName);
+    checkPassword(enteredPassword,enteredEmail,enteredNickName,enteredName);
+  }
+  function validPasswordConfirm(){
+    checkPasswordConfim(enteredPassword, enteredPasswordConfirm);
   }
   function validNameLength(){
     checkNameLength(enteredName);
@@ -144,6 +147,7 @@ function UserInfoContainer() {
                   checkPassword={validPassword}
                   checkPhoneNumber={validPhoneNumber}
                   checkNameLength={validNameLength} 
+                  checkPasswordConfirm={validPasswordConfirm}
                   // onModify={onModify}
                   currentUser={currentUser}
                   setEditing={setEditing}

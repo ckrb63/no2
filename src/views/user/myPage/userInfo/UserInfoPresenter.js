@@ -30,9 +30,9 @@ const EditUserForm = (props) => {
             <label>이름</label>
             <input className="u-full-width" type="text" value={props.name} name="name" onChange={props.nameChange} onBlur={props.checkNameLength}/>
             <label>비밀번호</label>
-            <input className="u-full-width" type="text" value={props.password} name="password" onChange={props.passwordChange} onBlur={props.checkPassword}/>
+            <input className="u-full-width" type="password" value={props.password} name="password" onChange={props.passwordChange} onBlur={props.checkPassword}/>
             <label>비밀번호확인</label>
-            <input className="u-full-width" type="text" value={props.passwordConfirm} name="password" onChange={props.passwordConfirmChange}/>
+            <input className="u-full-width" type="password" value={props.passwordConfirm} name="password" onChange={props.passwordConfirmChange} onBlur={props.checkPasswordConfirm}/>
             <label>이메일</label>
             <input className="u-full-width" type="text" value={props.email} name="email" onChange={props.emailChange} onBlur={props.checkEmail}/>
             {/* <input className="u-full-width" type="text" value={user.email} name="email" onChange={handleChange} onBlur={props.checkEmail}/> */}
