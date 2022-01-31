@@ -50,7 +50,7 @@ const EditUserForm = (props) => {
     
     const handleSubmit = e => {
         e.preventDefault();
-        if (user.name && user.password && user.email && user.nickname && user.phoneNumber) props.updateUser(user);
+        if (props.name && props.password && props.email && props.nickname && props.phoneNumber) props.updateUser(props);
     }
     const buttonStyle = formIsValid ? "button-primary" : "";
     // const nameBlurHandler = () => {
