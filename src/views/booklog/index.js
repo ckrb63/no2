@@ -6,8 +6,8 @@ function Booklog() {
     return (
         <Routes>
           <Route index path="/" element={<BoardPage />} />
-          <Route path="/article/:articleId" element={<ArticlePage />} />
-          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/article/:articleId" exact element={<ArticlePage />} />
+          <Route path="/register" exact element={<RegisterPage />} />
         </Routes>
     );
   }

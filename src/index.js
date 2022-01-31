@@ -17,7 +17,7 @@ import UserInfoContainer from "./views/user/myPage/userInfo/UserInfoContainer";
 import UserBooklogPresenter from "./views/user/myPage/userBooklog/UserBooklogPresenter";
 import UserBookclubPresenter from "./views/user/myPage/userBookclub/UserBookclubPresenter";
 import UserChallengePresenter from "./views/user/myPage/userChallenge/UserChallengePresenter";
-
+import RegisterPage from "./views/booklog/RegisterPage/RegisterPage";
 const store = createStore(rootReducer, composeWithDevTools()); // 스토어를 만듭니다.
 const listener = () => {
   const state = store.getState();
@@ -44,6 +44,7 @@ render(
           
           </Route>
           <Route path="/booklog" element={<Booklog />} />
+          <Route path="/register" element={<RegisterPage />} />
         </Routes>
       </BrowserRouter>
     </PersistGate>

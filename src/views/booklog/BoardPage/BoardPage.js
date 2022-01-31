@@ -1,6 +1,6 @@
 import React from 'react'
 import BoardList from './Sections/BoardList'
-
+import { Link } from 'react-router-dom'
 function BoardPage(){
     return (
         <div>
@@ -8,7 +8,9 @@ function BoardPage(){
                 <h1>Board Title</h1>
             </div>
             <div>
-                <button>글작성</button>
+                <Link to="/register">
+                    <button>글작성</button>
+                </Link>
             </div>
             <div>
                 <BoardList />
