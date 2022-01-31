@@ -30,16 +30,18 @@ const EditUserForm = (props) => {
             <label>이름</label>
             <input className="u-full-width" type="text" value={props.name} name="name" onChange={props.nameChange} onBlur={props.checkNameLength}/>
             <label>비밀번호</label>
-            <input className="u-full-width" type="text" value={user.password} name="password" onChange={props.passwordChange} />
+            <input className="u-full-width" type="text" value={props.password} name="password" onChange={props.passwordChange} onBlur={props.checkPassword}/>
+            <label>비밀번호확인</label>
+            <input className="u-full-width" type="text" value={props.passwordConfirm} name="password" onChange={props.passwordConfirmChange}/>
             <label>이메일</label>
-            <input className="u-full-width" type="text" value={user.email} name="email" onChange={props.emailChange}/>
+            <input className="u-full-width" type="text" value={props.email} name="email" onChange={props.emailChange} onBlur={props.checkEmail}/>
             {/* <input className="u-full-width" type="text" value={user.email} name="email" onChange={handleChange} onBlur={props.checkEmail}/> */}
             <button onClick={props.checkId}>중복확인</button>
             <label>닉네임</label>
-            <input className="u-full-width" type="text" value={user.nickname} name="nickname" onChange={props.nicknameChagne} />
+            <input className="u-full-width" type="text" value={props.nickname} name="nickname" onChange={props.nicknameChange} />
             <button type="submit" onClick={props.checkNickname}>중복확인</button>
             <label>핸드폰번호</label>
-            <input className="u-full-width" type="text" value={user.phoneNumber} name="phoneNumber" onChange={props.phoneChange}/>
+            <input className="u-full-width" type="text" value={props.phoneNumber} name="phoneNumber" onChange={props.phoneChange}/>
             {/* <input className="u-full-width" type="text" value={user.phoneNumber} name="phoneNumber" onChange={handleChange} onBlur={props.checkPhoneNumber}/> */}
             <button className="button-primary" type="submit" onClick={handleSubmit} >수정하기</button>
             <button type="submit" onClick={() => props.setEditing(false)} >취소하기</button>

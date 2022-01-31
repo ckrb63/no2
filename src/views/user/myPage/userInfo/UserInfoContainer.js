@@ -19,6 +19,7 @@ function UserInfoContainer() {
   const [enteredName, setEnterdnName] = useState(userList[0].name);
   console.log(enteredName);
   const [enteredPassword, setEnteredPassword] = useState(userList[0].password);
+  const [enteredPasswordConfirm, setEnteredPasswordConfirm] = useState(userList[0].password);
   const [enteredNickName, setEnteredNickName] = useState(userList[0].nickname);
   const [enteredPhone, setEnteredPhone] = useState(userList[0].phoneNumber);
 
@@ -32,6 +33,10 @@ function UserInfoContainer() {
     setEnteredPassword(event.target.value);
 
   };
+  const passwordChangeConfirmHandler = (event) => {
+    setEnteredPasswordConfirm(event.target.value);
+  };
+
   const nicknameChangeHandler = (event) => {
     setEnteredNickName(event.target.value);
   };
@@ -73,7 +78,7 @@ function UserInfoContainer() {
     checkNickname(users.nickname, url);
   }
   function validPassword(){
-    checkPassword(users.password,users.email,users.nickname,users.name);
+    checkPassword(enteredPassword,enteredPasswordConfirm, enteredEmail,enteredNickName,enteredName);
   }
   function validNameLength(){
     checkNameLength(enteredName);
@@ -144,13 +149,15 @@ function UserInfoContainer() {
                   setEditing={setEditing}
                   updateUser={updateUser} 
                   emailChange={emailChangeHandler}
-                  passwordChagne={passwordChangeHandler}
+                  passwordChange={passwordChangeHandler}
+                  passwordConfirmChange={passwordChangeConfirmHandler}
                   nameChange={nameChangeHandler}
                   nicknameChange={nicknameChangeHandler}
                   phoneChange={phoneChangeHandler}
                   name={enteredName}
                   email={enteredEmail}
                   password={enteredPassword}
+                  passwordConfirm={enteredPasswordConfirm}
                   nickname={enteredNickName}
                   phoneNumber={enteredPhone}
                   />
