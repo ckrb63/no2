@@ -21,13 +21,13 @@ function RegisterOrEdit(props) {
     return(
         <div>
             <form onSubmit>
-            <button onClick={props.handleSubmit}>
+            <button onClick={onSubmitArticle}>
                     저장
                 </button>
                 <br />
                 <div style={{maxWidth: "700px", margin:"2rem"}}>
                     <input 
-                        onChange={onContentChange}
+                        onChange={onTitleChange}
                         value={TitleValue} 
                         type="text" 
                         name="title"
@@ -35,7 +35,7 @@ function RegisterOrEdit(props) {
                     />
                     <hr></hr>
                     <textarea 
-                        onChange={onSubmitArticle}
+                        onChange={onContentChange}
                         value={ContentValue} 
                         name="content"
                         placeholder="텍스트를 입력해주세요."
