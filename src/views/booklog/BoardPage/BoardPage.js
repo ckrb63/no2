@@ -5,11 +5,11 @@ function BoardPage(){
     return (
         <div>
             <div>
-                <h1>Board Title</h1>
+                <h1>북로그</h1>
             </div>
             <div>
                 <Link to="/register">
-                    <button>글작성</button>
+                    <button>작성</button>
                 </Link>
             </div>
             <div>
