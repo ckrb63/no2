@@ -4,7 +4,6 @@ import RegisterOrEdit from "./Sections/RegisterOrEdit";
 function RegisterPage(){
     const [TitleValue, setTitleValue] = useState("");
     const [ContentValue, setContentValue] = useState("");
-    const [IsForUpdate, setIsForUpdate] = useState(false);
 
     const onTitleChange = (event) => {
         setTitleValue(event.currentTarget.value);
@@ -30,7 +29,6 @@ function RegisterPage(){
                 handleTitleChange={onTitleChange}
                 handleContentChange={onContentChange}
                 handleSubmit={onSubmitArticle}
-                updateRequest={IsForUpdate}
             />
         </>
     );
