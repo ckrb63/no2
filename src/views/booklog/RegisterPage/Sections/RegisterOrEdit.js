@@ -18,10 +18,20 @@ function RegisterOrEdit(props) {
         const article = { title: TitleValue, content: ContentValue};
         // console.log(article);
     };
+
+    const onSubmitChangeBook = (event) => {
+        event.preventDefault();
+        const article = { title: TitleValue, content: ContentValue};
+        // console.log(article);
+    };
+
     return(
         <div>
             <form onSubmit>
-            <button onClick={onSubmitArticle}>
+                 <button onClick={onSubmitChangeBook}>
+                    책 변경
+                </button>
+                <button onClick={onSubmitArticle}>
                     저장
                 </button>
                 <br />

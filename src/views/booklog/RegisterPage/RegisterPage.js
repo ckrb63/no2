@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import RegisterOrEdit from "./Sections/RegisterOrEdit";
+import { Toggle } from "./Toggle";
 
 function RegisterPage(){
     const [TitleValue, setTitleValue] = useState("");
@@ -20,9 +21,11 @@ function RegisterPage(){
         const article = { title: TitleValue, content: ContentValue};
         // console.log(article);
     };
+    
 
     return(
         <>
+            <Toggle />
             <RegisterOrEdit
                 titleValue={TitleValue}
                 contentValue={ContentValue}
