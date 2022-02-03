@@ -14,10 +14,9 @@ import Signup from "./views/user/signup/SignupContainer";
 import MyPage from "./views/user/myPage/index";
 // import Booklog from "./views/booklog";
 import UserInfoContainer from "./views/user/myPage/userInfo/UserInfoContainer";
-import UserBooklogPresenter from "./views/user/myPage/userBooklog/UserBooklogPresenter";
-import UserBookclubPresenter from "./views/user/myPage/userBookclub/UserBookclubPresenter";
-import UserChallengePresenter from "./views/user/myPage/userChallenge/UserChallengePresenter";
 import RegisterPage from "./views/booklog/RegisterPage/RegisterPage";
+import DetailPage from "./views/booklog/DetailPage";
+import ModifyPage from "./views/booklog/ModifyPage";
 const store = createStore(rootReducer, composeWithDevTools()); // 스토어를 만듭니다.
 const listener = () => {
   const state = store.getState();
@@ -44,6 +43,8 @@ render(
           </Route>
           {/* <Route path="/booklog" element={<Booklog />} /> */}
           <Route path="/register" element={<RegisterPage />} />
+          <Route path="/modify" element={<ModifyPage />} />
+          <Route path="/detail" element={<DetailPage />} />
         </Routes>
       </BrowserRouter>
     </PersistGate>

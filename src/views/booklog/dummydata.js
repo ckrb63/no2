@@ -15,4 +15,18 @@ const BOOKINFO =
         starRating: 0.0
     };
 
-export default BOOKINFO;
+const BOOKLOGINFO = 
+    {
+        booklogSeq: 1,
+        memberSeq: 1,
+        title: "개미를 읽고 느낀점",
+        content: "재밌다.",
+        summary: "적극추천",
+        starRating: null,
+        readDate: null,
+        isOpen: false,
+        views: 15,
+        createdDate: "2022-02-02"
+    }   
+
+export { BOOKINFO, BOOKLOGINFO};

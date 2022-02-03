@@ -1,17 +1,18 @@
 import React, { useState } from "react";
-import SearchBook from "./SearchBook";
+import SearchBook from "./RegisterPage/SearchBook";
 import Modal from "react-modal";
-import Toggle from "../Toggle";
-import StarRating from "../StarRating";
-import { BOOKINFO } from "../dummydata";
-import "./RegisterPage.css";
+import Toggle from "./Toggle";
+import StarRating from "./StarRating";
+import { BOOKINFO } from "./dummydata.js";
+import "./RegisterPage/RegisterPage.css";
 import axios from "axios";
+import DUMMY_DATA from "../user/myPage/userInfo/weeds/dummydata";
 
 const url = 'https://77e1dca6-cd01-4930-ae25-870e7444cc55.mock.pstmn.io';
 const { title, author, publisher, publicationDate, largeImgUrl, seq } =
   BOOKINFO;
 
-function RegisterPage() {
+function ModifyPage() {
   const [TitleValue, setTitleValue] = useState("");
   const [ContentValue, setContentValue] = useState("");
   const [isSearched, setIsSearched] = useState(false);
@@ -50,7 +51,7 @@ function RegisterPage() {
     axios
       .post(url + `/api/v1/booklogs`, {
         memberSeq: 1,
-        bookInfoSeq: selectedBook.seq,
+        bookInfoSeq: seq,
         title: TitleValue,
         isOpen: !toggle,
         content: ContentValue,
@@ -179,4 +180,4 @@ function RegisterPage() {
   );
 }
 
-export default RegisterPage;
+export default ModifyPage;
