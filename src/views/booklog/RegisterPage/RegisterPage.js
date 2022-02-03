@@ -18,6 +18,13 @@ function RegisterPage() {
   const [rating, setRating] = useState(0);
   const [toggle, setToggle] = useState(false);
   const [oneSentence, setOneSentence] = useState("");
+  const [selectedBook, setSelectedBook] = useState({});
+  let tmpUrl;
+  if(isSearched){
+    tmpUrl = selectedBook.smallImgUrl.substring(0, selectedBook.smallImgUrl.length-5);
+    tmpUrl = tmpUrl + 's.jpg';
+    console.log(tmpUrl);
+  }
   const onSentenceChange = (event) => {
     setOneSentence(event.target.value);
   };
@@ -77,10 +84,14 @@ function RegisterPage() {
     setToggle(tog);
   };
 
+  const setBook = (book) =>{
+    setSelectedBook(book);
+  };
+
   return (
     <div>
       <Modal isOpen={!isSearched} ariaHideApp={false}>
-        <SearchBook search={setIsSearched} />
+        <SearchBook search={setIsSearched} setbook={setBook}/>
       </Modal>
       {isSearched && (
         <div>
@@ -100,25 +111,25 @@ function RegisterPage() {
             </button>
           </div>
           <div className="wrapper">
-            <img className="img" src={largeImgUrl}></img>
+            <img className="img" src={tmpUrl}></img>
             <div className="info">
               <table style={{ align: "center" }}>
                   <tbody>
                   <tr>
                     <th> 제목 </th>
-                    <td>{title}</td>
+                    <td>{selectedBook.title}</td>
                   </tr>
                   <tr>
                     <th> 작가 </th>
-                    <td>{author}</td>
+                    <td>{selectedBook.author}</td>
                   </tr>
                   <tr>
                     <th> 출판사 </th>
-                    <td>{publisher}</td>
+                    <td>{selectedBook.publisher}</td>
                   </tr>
                   <tr>
                     <th> 출판일 </th>
-                    <td>{publicationDate}</td>
+                    <td>{selectedBook.publicationDate}</td>
                   </tr>
                   <tr>
                     <th> 별점 </th>
