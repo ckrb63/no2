@@ -1,4 +1,4 @@
-const BOOKINFO = [
+const BOOKINFO = 
     {
         seq: 1,
         isbn: "9791161571188",
@@ -13,7 +13,6 @@ const BOOKINFO = [
         publisher: "나무옆의자",
         publicationDate: "2021-04-20T09:00:00",
         starRating: 0.0
-    },
-];
+    };
 
 export default BOOKINFO;

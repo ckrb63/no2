@@ -1,9 +1,13 @@
 const SearchBook = (props) => {
+  const onClickHandler = () => {
+    props.search(true);
+  };
+
   return <div>
     <label>책을 검색해주세요.</label>
     <div>
       <input></input>
-      <button onClick={props.search}>검색</button>
+      <button onClick={onClickHandler}>검색</button>
     </div>
   </div>;
 };

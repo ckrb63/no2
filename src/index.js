@@ -12,7 +12,7 @@ import { persistStore } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
 import Signup from "./views/user/signup/SignupContainer";
 import MyPage from "./views/user/myPage/index";
-import Booklog from "./views/booklog";
+// import Booklog from "./views/booklog";
 import UserInfoContainer from "./views/user/myPage/userInfo/UserInfoContainer";
 import UserBooklogPresenter from "./views/user/myPage/userBooklog/UserBooklogPresenter";
 import UserBookclubPresenter from "./views/user/myPage/userBookclub/UserBookclubPresenter";
@@ -41,9 +41,8 @@ render(
             <Route path="mybooklog" />
             <Route path="mybookclub" />
             <Route path="mychallenge" />
-          
           </Route>
-          <Route path="/booklog" element={<Booklog />} />
+          {/* <Route path="/booklog" element={<Booklog />} /> */}
           <Route path="/register" element={<RegisterPage />} />
         </Routes>
       </BrowserRouter>
