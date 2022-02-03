@@ -50,7 +50,7 @@ function RegisterPage() {
     axios
       .post(url + `/api/v1/booklogs`, {
         memberSeq: 1,
-        bookInfoSeq: seq,
+        bookInfoSeq: selectedBook.seq,
         title: TitleValue,
         isOpen: !toggle,
         content: ContentValue,
