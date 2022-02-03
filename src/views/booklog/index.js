@@ -1,3 +1,4 @@
+
 // import BoardPage from "./BoardPage/BoardPage";
 // import { Routes, Route } from "react-router-dom";
 // import ArticlePage from "./ArticlePage/ArticlePage";
@@ -11,5 +12,5 @@
 //         </Routes>
 //     );
 //   }
-  
+
 //   export default Booklog;

@@ -4,8 +4,8 @@ import styled from 'styled-components';
 // 클래스를 설정하며 .toggle--checked 클래스가 활성화 되었을 경우의 CSS도 구현
 const ToggleContainer = styled.div`
   position: relative;
-  margin-top: 8rem;
-  left: 47%;
+  margin-top: 5rem;
+  left: 0%;
   cursor: pointer;
 
   > .toggle-container {
@@ -44,16 +44,16 @@ const ToggleContainer = styled.div`
 
 // 설명 부분의 CSS를 구현
 const Desc = styled.div`
-  text-align: center;
-  margin-top: 1rem;
+  text-align: left;
 `;
 
 // State를 바꿔줄 이벤트 함수 구현
-export const Toggle = () => {
+export const Toggle = (props) => {
   const [isOn, setisOn] = useState(false);
 
   const toggleHandler = () => {
     setisOn(!isOn)
+    props.toggle(isOn);
   };
 
   return (
@@ -62,10 +62,10 @@ export const Toggle = () => {
         {/* 조건부 스타일링 : Toggle이 ON일 경우 toggle--checked 클래스를 추가 */}
         <div className = {`toggle-container ${isOn ? "toggle--checked" : ""}`}/>
         <div className = {`toggle-circle ${isOn ? "toggle--checked" : ""}`}/>
+        <Desc> {isOn ? "공개" : "비공개"} </Desc>
       </ToggleContainer>
-      
-      {/* 조건부 렌더링 : Toggle의 ON/OFF 상태에 따라 Desc 컴포넌트 내부의 텍스트 변경 */}
-      <Desc> {isOn ? "공개" : "비공개"} </Desc>
+
     </>
   );
 };
+export default Toggle;
