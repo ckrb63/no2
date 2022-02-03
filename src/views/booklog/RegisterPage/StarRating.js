@@ -36,7 +36,7 @@ const StarRating = props => {
     props.rate(event.target.getAttribute("star-id"));}}
     >
       {Array.from({ length: 5 }, (v, i) => (
-        <Star starId={i + 1} marked={selection ? selection > i : rating > i} />
+        <Star key={i+1} starId={i + 1} marked={selection ? selection > i : rating > i} />
       ))}
     </span>
   );
