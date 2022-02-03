@@ -44,7 +44,7 @@ render(
           {/* <Route path="/booklog" element={<Booklog />} /> */}
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/modify" element={<ModifyPage />} />
-          <Route path="/detail" element={<DetailPage />} />
+          <Route path="/detail" element={<DetailPage/>} />
         </Routes>
       </BrowserRouter>
     </PersistGate>
