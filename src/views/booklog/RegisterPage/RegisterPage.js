@@ -88,7 +88,7 @@ function RegisterPage() {
                         </tr>
                         <tr>
                             <th> 한줄평 </th>
-                            <td><input onChange={onSentenceChange} value={oneSentence}></input></td>
+                            <td><input onChange={onSentenceChange} value={oneSentence} style={{width: "300px"}}></input></td>
                         </tr>
                     </thread>
                 </table>
@@ -97,8 +97,8 @@ function RegisterPage() {
           <hr></hr>
           <form onSubmit>
             <br />
-            <div style={{ maxWidth: "700px", margin: "2rem" }}>
-              <input size="100"
+            <div>
+              <input size="112"
                 onChange={onTitleChange}
                 value={TitleValue}
                 type="text"
