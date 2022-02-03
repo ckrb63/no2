@@ -4,7 +4,7 @@ import styled from 'styled-components';
 // 클래스를 설정하며 .toggle--checked 클래스가 활성화 되었을 경우의 CSS도 구현
 const ToggleContainer = styled.div`
   position: relative;
-  margin-top: 5rem;
+  display: inline-block;
   left: 0%;
   cursor: pointer;
 
