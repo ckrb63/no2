@@ -69,3 +69,4 @@ export const Toggle = () => {
     </>
   );
 };
+export default Toggle;
