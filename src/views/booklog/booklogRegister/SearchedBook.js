@@ -1,5 +1,5 @@
 import styled from "styled-components";
-const Book = (props) => {
+const SearchedBook = (props) => {
   const Bookinfo = styled.div`
   
     .wrapper{
@@ -23,4 +23,4 @@ const Book = (props) => {
     </Bookinfo>
   );
 };
-export default Book;
+export default SearchedBook;

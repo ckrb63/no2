@@ -14,9 +14,9 @@ import Signup from "./views/user/signup/SignupContainer";
 import MyPage from "./views/user/myPage/index";
 // import Booklog from "./views/booklog";
 import UserInfoContainer from "./views/user/myPage/userInfo/UserInfoContainer";
-import RegisterPage from "./views/booklog/RegisterPage/RegisterPage";
-import DetailPage from "./views/booklog/DetailPage";
-import ModifyPage from "./views/booklog/ModifyPage";
+import BooklogDetailContainer from "./views/booklog/booklogDetail/BooklogDetailContainer";
+import BooklogRegisterContainer from "./views/booklog/booklogRegister/BooklogRegisterContainer";
+
 const store = createStore(rootReducer, composeWithDevTools()); // 스토어를 만듭니다.
 const listener = () => {
   const state = store.getState();
@@ -42,9 +42,8 @@ render(
             <Route path="mychallenge" />
           </Route>
           {/* <Route path="/booklog" element={<Booklog />} /> */}
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/modify" element={<ModifyPage />} />
-          <Route path="/detail" element={<DetailPage/>} />
+          <Route path="/booklogregister" element={<BooklogRegisterContainer />} />
+          <Route path="/booklogdetail" element={<BooklogDetailContainer />} />
         </Routes>
       </BrowserRouter>
     </PersistGate>

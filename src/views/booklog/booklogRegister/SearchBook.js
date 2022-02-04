@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
-import Book from "./Book";
+import SearchedBook from "./SearchedBook";
+
 const url = "https://77e1dca6-cd01-4930-ae25-870e7444cc55.mock.pstmn.io";
 const SearchBook = (props) => {
   const [enteredText, setEnteredText] = useState('');
@@ -21,7 +22,7 @@ const SearchBook = (props) => {
     const bookList = books.data.data.bookList;
     setContext(bookList.map((book)=>{
       console.log(book);
-      return <Book onClick={selectBook} book={book} key={book.seq}/>;
+      return <SearchedBook onClick={selectBook} book={book} key={book.seq}/>;
     }));
   };
   const inputChangeHandler=(event)=>{
@@ -29,7 +30,7 @@ const SearchBook = (props) => {
   };
   console.log(context);
   return <div>
-    <label>책을 검색해주세요.</label>
+      <label>책을 검색해주세요.</label>
     <div>
       <input value={enteredText} onChange={inputChangeHandler} type="text"></input>
       <button onClick={onClickHandler}>검색</button>
