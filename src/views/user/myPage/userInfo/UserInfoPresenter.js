@@ -1,10 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import {checkId, checkEmail, checkNickname, checkPassword, checkNameLength, checkPhoneNumber} from "../../validCheck/ValidCheck";
-// import classes from './UserInfoPresenter.module.css';
-
-
-
 
 const EditUserForm = (props) => {
     // useEffect(() => {
@@ -13,7 +9,7 @@ const EditUserForm = (props) => {
     const [emailIsValid, setEmailIsValid] = useState(true);
     const [nameIsValid, setNameIsValid] = useState(true);
     const [passwordIsValid, setPasswordIsValid] = useState(true);
-    const [passwordConfimIsValid, setPasswordConfimIsValid] = useState(true);
+    const [passwordConfirmIsValid, setPasswordConfirmIsValid] = useState(true);
     const [phoneIsValid, setPhoneIsValid] = useState(true);
     const [nicknameIsValid, setNicknameIsValid] = useState(true);
 
@@ -31,7 +27,7 @@ const EditUserForm = (props) => {
     };
     const passwordConfirmBlurHandler = () =>{
         const isValid = props.checkPasswordConfirm();
-        setPasswordConfimIsValid(isValid);
+        setPasswordConfirmIsValid(isValid);
     };
     const phoneBlurHandler = () =>{
         const isValid = props.checkPhoneNumber();
@@ -42,15 +38,9 @@ const EditUserForm = (props) => {
         setNicknameIsValid(isValid);
     };
     let formIsValid;
-    if(nameIsValid && passwordIsValid && passwordConfimIsValid && nicknameIsValid && emailIsValid && phoneIsValid)
+    if(nameIsValid && passwordIsValid && passwordConfirmIsValid && nicknameIsValid && emailIsValid && phoneIsValid)
         formIsValid = true;
     else formIsValid = false;
-    const [user, setUser] = useState(props.currentUser);
-    
-    const handleChange = e => {
-        const {name, value} = e.target;
-        setUser({...user, [name]: value});
-        }
     
     const handleSubmit = e => {
         e.preventDefault();

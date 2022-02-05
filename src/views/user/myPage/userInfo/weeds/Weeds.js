@@ -35,6 +35,8 @@ const Weeds = (props) => {
     // return data.date ===
   });
 
+  console.log(weed);
+  // console.log(props.datas);
 
   props.datas.map((data)=>{
     for(i=0;i<84;i++){
@@ -43,9 +45,10 @@ const Weeds = (props) => {
       }
     }
   })
+  // console.log(weed);
 
-  const context = weed.map((data,idx)=>{
-    return <Grass key={idx} count={data.count} date={data.date}/>
+  const context = weed.map((data)=>{
+    return <Grass count={data.count} date={data.date}/>
   })
 
   return <StyledWeeds>

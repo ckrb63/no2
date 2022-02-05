@@ -9,7 +9,7 @@ const userList = [
         exp: 7,
         point: 3000,
         is_deleted: false
-    }]
-;
+    }
+];
 
 export default userList;

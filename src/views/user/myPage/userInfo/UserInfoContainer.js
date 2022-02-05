@@ -3,7 +3,6 @@ import userList from "./asset/data";
 import { UserTable, EditUserForm } from "./UserInfoPresenter";
 import profile from "./asset/ProfilePicture.png";
 import styled from "styled-components";
-import "./asset/UserInfoPresenter.css";
 import axios from 'axios'
 import {
   checkId,
