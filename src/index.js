@@ -19,7 +19,8 @@ import Header from "./views/main/header/Header";
 import "./common/css/index.css";
 import BooklogRegisterContainer from "./views/booklogs/booklogRegister/BooklogRegisterContainer";
 import BooklogDetailContainer from "./views/booklogs/booklogDetail/BooklogDetailContainer";
-
+import BookclubPostingRegisterContainer from "./views/bookclub/BookclubPostingRegisterContainer";
+import BookclubBoardContainer from "./views/bookclub/BookclubBoardContainer";
 const store = createStore(rootReducer, composeWithDevTools()); // 스토어를 만듭니다.
 const listener = () => {
   const state = store.getState();
@@ -72,6 +73,8 @@ render(
               </Route>
               <Route path="/booklogregister" element={<BooklogRegisterContainer/>} />
               <Route path="/booklogdetail" element={<BooklogDetailContainer/>} />
+              <Route path="/bookclubpostingregister" element={<BookclubPostingRegisterContainer />} />
+              <Route path="/bookclubboard" element={<BookclubBoardContainer />} />
             </Routes>
           </Wrapper>
         </Body>
