@@ -52,7 +52,7 @@ function RegisterForm({
         </button>
       </div>
       <Wrapper>
-        <img src={tmpUrl}></img>
+        {/* <img src={tmpUrl}></img> */}
         <Info>
           <Table>
             <tbody>

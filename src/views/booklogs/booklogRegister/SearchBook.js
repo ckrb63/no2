@@ -1,8 +1,9 @@
 import axios from "axios";
 import { useState } from "react";
 import SearchedBook from "./SearchedBook";
+import Pagination from "react-js-pagination";
 
-const url = "https://77e1dca6-cd01-4930-ae25-870e7444cc55.mock.pstmn.io";
+const url = "http://i6a305.p.ssafy.io:8080";
 const SearchBook = (props) => {
   const [enteredText, setEnteredText] = useState('');
   const [context, setContext] = useState([]);
@@ -10,11 +11,14 @@ const SearchBook = (props) => {
     props.setbook(book);
     props.search(true);
   };
+
+  const [page, setPage]= useState(1);
+  
   const onClickHandler = async () => {
     const books = await axios
       .post(url + `/api/v1/bookinfos`, {
-        page: 1,
-        limit: 10,
+        page: page,
+        limit: 12,
         searchCategory:"title",
         searchKeyword:enteredText,
         orderCategory:"review"
@@ -25,6 +29,9 @@ const SearchBook = (props) => {
       return <SearchedBook onClick={selectBook} book={book} key={book.seq}/>;
     }));
   };
+  function handlePageChange(event){
+    setPage(event);
+  }
   const inputChangeHandler=(event)=>{
     setEnteredText(event.target.value);
   };
@@ -36,6 +43,12 @@ const SearchBook = (props) => {
       <button onClick={onClickHandler}>검색</button>
     </div>
     <div>{context}</div>
+    <Pagination activePage={page} 
+      itemsCountPerPage={12} 
+      pageRangeDisplayed={5} 
+      prevPageText={"‹"} 
+      nextPageText={"›"} 
+      onChange={handlePageChange} />
   </div>;
 };
 export default SearchBook;
