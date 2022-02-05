@@ -114,10 +114,9 @@ function BooklogRegisterContainer() {
           TitleValue={TitleValue}
           onContentChange={onContentChange}
           ContentValue={ContentValue}
-          ></RegisterForm>
-        )
-      }
-      </div>
+        ></RegisterForm>
+      )}
+    </div>
   );
 }
 

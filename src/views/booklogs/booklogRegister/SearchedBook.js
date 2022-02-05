@@ -1,25 +1,30 @@
 import styled from "styled-components";
+
 const SearchedBook = (props) => {
   const Bookinfo = styled.div`
-  
-    .wrapper{
-      display : inline-block;
+    .wrapper {
+      display: inline-block;
     }
-    p{
-      margin : 0;
+    p {
+      margin: 0;
     }
   `;
-  const bookSelectHandler=()=>{
+  const Wrapper = styled.div`
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+  `;
+  const bookSelectHandler = () => {
     props.onClick(props.book);
-    
   };
   return (
     <Bookinfo onClick={bookSelectHandler}>
       <img src={props.book.smallImgUrl}></img>
-      <div className="wrapper">
+      <Wrapper>
         <p>{props.book.title}</p>
         <p>{props.book.author}</p>
-      </div>
+      </Wrapper>
     </Bookinfo>
   );
 };

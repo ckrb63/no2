@@ -19,7 +19,6 @@ const Table = styled.div`
   align: "center";
 `;
 
-
 function RegisterForm({
   toggleHandler,
   onSubmitChangeBook,
@@ -40,13 +39,13 @@ function RegisterForm({
         <Toggle toggle={toggleHandler} />
         <button
           onClick={onSubmitChangeBook}
-          style={{ position: "absolute", right: 0, marginRight: "280px" }}
+          style={{ position: "flex", right: 0, marginRight: "18%" }}
         >
           책 변경
         </button>
         <button
           onClick={onSubmitArticle}
-          style={{ position: "absolute", right: 0, marginRight: "170px" }}
+          style={{ position: "flex", right: 0, marginRight: "11%" }}
         >
           저장
         </button>
