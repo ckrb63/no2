@@ -18,7 +18,6 @@ function BooklogRegisterContainer() {
   const [toggle, setToggle] = useState(false);
   const [oneSentence, setOneSentence] = useState("");
   const [selectedBook, setSelectedBook] = useState({});
-
   // let tmpUrl;
   // if (isSearched) {
   //   tmpUrl = selectedBook.smallImgUrl.substring(

@@ -66,6 +66,7 @@ function DetailForm({
   const Circle = styled.div`
     display: inline-block;
   `;
+  console.log(isOpen);
   return (
     <div>
       <div>
@@ -82,7 +83,7 @@ function DetailForm({
                 ></IsOpenCircle>
               </div>
             ) : (
-              <Toggle toggle={toggleHandler} />
+              <Toggle toggle={toggleHandler} modify={true} isOpen={isOpen} />
             )}
           </Circle>
 
