@@ -21,6 +21,7 @@ function BookclubPostingRegisterContainer() {
     align-items: center;
     font-size: 1.5rem;
     border-radius: 1.5rem;
+    padding-left: 25rem;
   `;
 
   return (

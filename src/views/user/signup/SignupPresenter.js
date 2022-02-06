@@ -14,7 +14,6 @@ const SignupTemplateBlock = styled.div`
   display: flex;
   flex-direction: column;
 `;
-
 const SignupHeadBlock = styled.div`
   padding-top: 10px;
   padding-bottom: 14px;
@@ -42,7 +41,6 @@ const SignupFormBlock = styled.div`
   padding-bottom: 48px;
   overflow-y: auto;
 `;
-
 const SignupButton = styled.button`
   width: 100px;
   height: 50px;
@@ -66,6 +64,7 @@ function Signup({
   checkId,
   checkNickname,
   checkPhoneNumber,
+  checkPhoneDuplicate,
   onCreate,
 }) {
   return (
@@ -85,8 +84,9 @@ function Signup({
             size={100}
             onBlur={checkEmail}
           ></input>
+          <button onClick={checkId}>중복확인</button>
         </div>
-        <button onClick={checkId}>중복확인</button>
+        
         <div>
           <label for="password">비밀번호 </label>
           <input
@@ -131,8 +131,9 @@ function Signup({
             onChange={onNicknameHandler}
             size={100}
           ></input>
+          <button onClick={checkNickname}>중복확인</button>
         </div>
-        <button onClick={checkNickname}>중복확인</button>
+        
         <div>
           <label for="phoneNumber">휴대폰번호 </label>
           <input
@@ -144,11 +145,11 @@ function Signup({
             onBlur={checkPhoneNumber}
             size={100}
           ></input>
+          <button onClick={checkPhoneDuplicate}>중복확인</button>
         </div>
       </SignupFormBlock>
       <SignupButton onClick={onCreate}>가입하기</SignupButton>
     </SignupTemplateBlock>
   );
 }
-
 export default Signup;
