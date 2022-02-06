@@ -10,6 +10,11 @@ import Login from "./views/user/login/LoginContainer";
 import { persistStore } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
 import Signup from "./views/user/signup/SignupContainer";
+
+import {SearchMainContainer} from "./views/bookInfo/bookSearch/SearchMainContainer";
+import SearchResultContainer from "./views/bookInfo/bookSearch/SearchResultContainer";
+import BookDetailContainer from "./views/bookDetail/BookDetailContainer";
+
 import Booklogs from "./views/booklogs";
 import BooklogListContainer from "./views/booklogs/booklogList/BooklogListContainer";
 import MyPage from "./views/user/myPage/index";
@@ -19,8 +24,7 @@ import Header from "./views/main/header/Header";
 import "./common/css/index.css";
 import BooklogRegisterContainer from "./views/booklogs/booklogRegister/BooklogRegisterContainer";
 import BooklogDetailContainer from "./views/booklogs/booklogDetail/BooklogDetailContainer";
-import BookclubPostingRegisterContainer from "./views/bookclub/BookclubPostingRegisterContainer";
-import BookclubBoardContainer from "./views/bookclub/BookclubBoardContainer";
+
 const store = createStore(rootReducer, composeWithDevTools()); // 스토어를 만듭니다.
 const listener = () => {
   const state = store.getState();
@@ -61,6 +65,12 @@ render(
               <Route path="/" element={<App />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
+
+              <Route path="/searchMain" element={<SearchMainContainer />} />
+              <Route path="/search/" element={<SearchMainContainer />} />
+              <Route path="/search/:category/:keyword" element={<SearchResultContainer/>} />
+              <Route path="/detail/:seq" element={<BookDetailContainer/>} />
+
               <Route path="/booklogs/*" element={<Booklogs />}>
                 <Route index element={<BooklogListContainer />} />
                 {/* <Route path="detail"/> */}
@@ -73,8 +83,6 @@ render(
               </Route>
               <Route path="/booklogregister" element={<BooklogRegisterContainer/>} />
               <Route path="/booklogdetail" element={<BooklogDetailContainer/>} />
-              <Route path="/bookclubpostingregister" element={<BookclubPostingRegisterContainer />} />
-              <Route path="/bookclubboard" element={<BookclubBoardContainer />} />
             </Routes>
           </Wrapper>
         </Body>
