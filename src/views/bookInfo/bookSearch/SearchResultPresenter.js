@@ -65,7 +65,8 @@ function SearchResultPresenter({
   totalCnt,
   orderHandler,
   useParam,
-  books,
+  books
+
 }) {
   return (
     <>

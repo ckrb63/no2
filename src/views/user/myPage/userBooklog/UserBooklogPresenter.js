@@ -23,7 +23,6 @@ function UserBooklogPresenter() {
       <Title>
         <h2>나의 북로그</h2>
       </Title>
-      
         <Link to="/booklogdetail" state={{ logSeq: 1, infoSeq: 1 }}>
           <div>북로그1</div>
         </Link>
