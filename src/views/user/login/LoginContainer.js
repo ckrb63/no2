@@ -14,7 +14,7 @@ function LoginContainer() {
   const onLogin = (id, pw) => {
     const userInfo = {
       email: id,
-      password: pw,
+      password: pw
     };
 
     // login 요청 성공시
@@ -48,6 +48,7 @@ function LoginContainer() {
 
   const onIdChange = (e) => {
     setId(e.currentTarget.value);
+    console.log(e.currentTarget.value);
   };
 
   const onPwChange = (e) => {

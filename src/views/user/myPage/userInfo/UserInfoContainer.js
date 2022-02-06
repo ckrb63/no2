@@ -3,7 +3,7 @@ import userList from "./asset/data";
 import { UserTable, EditUserForm } from "./UserInfoPresenter";
 import profile from "./asset/ProfilePicture.png";
 import styled from "styled-components";
-import axios from 'axios'
+import axios from "axios";
 import {
   checkId,
   checkEmail,
@@ -11,7 +11,7 @@ import {
   checkPassword,
   checkNameLength,
   checkPhoneNumber,
-  checkPasswordConfim,
+  checkPasswordConfim
 } from "../../validCheck/ValidCheck";
 const url = "https://77e1dca6-cd01-4930-ae25-870e7444cc55.mock.pstmn.io";
 
@@ -19,6 +19,10 @@ const Profile = styled.img`
   width: 150px;
   height: 150px;
   border-radius: 100%;
+`;
+const Wrapper = styled.div`
+  text-align: center;
+  width: 100%;
 `;
 function UserInfoContainer() {
   const [users, setUsers] = useState(userList);
@@ -64,7 +68,7 @@ function UserInfoContainer() {
     name: "",
     password: "",
     email: "",
-    nickname: "",
+    nickname: ""
   };
 
   const [currentUser, setCurrentUser] = useState(initialUser);
@@ -115,11 +119,11 @@ function UserInfoContainer() {
         password: enteredPassword,
         name: enteredName,
         nickname: enteredNickName,
-        phoneNumber: enteredPhone,
+        phoneNumber: enteredPhone
       })
       .then(function (response) {
         if (response.status === 201) {
-          alert(response.data.data.msg);//modified
+          alert(response.data.data.msg); //modified
         } else {
           alert(response.data.data.msg);
         }
@@ -148,8 +152,8 @@ function UserInfoContainer() {
           <div></div>
         )}
       </div>
-      <div className="row">
-        <div className="eight columns">
+      <Wrapper>
+        <div>
           {editing ? (
             <div className="edituserform">
               <EditUserForm
@@ -182,7 +186,7 @@ function UserInfoContainer() {
             <div></div>
           )}
         </div>
-      </div>
+      </Wrapper>
     </div>
   );
 }
