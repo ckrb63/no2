@@ -9,22 +9,33 @@ function UserBooklogPresenter() {
     padding-left: 10px;
   `;
 
+  const UtilButton = styled.div`
+    display: flex;
+    justify-content: space-between;
+      margin-left: 1rem;
+      button {
+    margin-left: 1rem;
+  }
+  `;
+
   return (
     <div>
       <Title>
         <h2>나의 북로그</h2>
       </Title>
-      <div>
+      
         <Link to="/booklogdetail" state={{ logSeq: 1, infoSeq: 1 }}>
           <div>북로그1</div>
         </Link>
+        <UtilButton>
         <Link to="/booklogregister">
-          <button
-            style={{ position: "absolute", right: 0, marginRight: "20px" }}>
-            작성
-          </button>
+          <UtilButton>
+            <div>
+          <button> 작성 </button>
+          </div>
+          </UtilButton>
         </Link>
-      </div>
+      </UtilButton>
       <div>{/* <BoardList /> */}</div>
     </div>
   );

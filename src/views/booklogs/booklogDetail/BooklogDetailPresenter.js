@@ -20,22 +20,32 @@ function DetailForm({
   contentHandler,
   enteredContent,
 }) {
+  const UtilButton = styled.div`
+    padding-left: 87rem;
+    display: flex;
+    justify-content: space-between;
+    button {
+      margin-left: 1rem;
+    }
+  `;
   const Wrapper = styled.div`
     text-align: center;
     justify-content: center;
     align-items: center;
     font-size: 1.5rem;
+    .summary {
+    margin-bottom: 0;
+  }
   `;
 
   const Wrapper2 = styled.div`
-    position: absolute;
     text-align: left;
-    left: 500px;
+    padding-left: 20rem;
   `;
 
   const Info = styled.div`
     display: inline-block;
-    padding-left: 7rem;
+    padding-left: 5rem;
   `;
 
   const Table = styled.div`
@@ -43,49 +53,50 @@ function DetailForm({
   `;
 
   const Desc = styled.div`
-    position: absolute;
-    top: 150px;
-    left: 320px;
+    text-align: left;
+    font-size: 1.5rem;
   `;
 
   const IsOpenCircle = styled.div`
-    position: absolute;
-    top: 150px;
-    left: 350px;
     width: 22px;
     height: 22px;
     border-radius: 50%;
     background-color: black;
   `;
+
+  const Circle = styled.div`
+   /* position: relative; */
+    display: inline-block;
+  padding-right: 80rem;
+  `
   return (
     <div>
       <div>
         <br />
+        <Circle>
         {!isEditing ? (
-          <>
+            <div>
             <Desc> {isOpen ? "공개" : "비공개"} </Desc>
             <IsOpenCircle
               style={isOpen ? { background: "blue" } : { background: "red" }}
             ></IsOpenCircle>
-          </>
+          </div>
         ) : (
           <Toggle toggle={toggleHandler} />
         )}
+         </Circle>
+        <UtilButton>
         {isEditing ? (
-          <div>
-            <button onClick={saveArticle} style={{ position: "absolute", right: 0, marginRight: "170px"}}>저장
-            </button>
-          </div>
+            <div>
+            <button onClick={saveArticle}>저장</button>
+            </div>
         ) : (
           <div>
-            <button onClick={editButtonHandler} style={{ position: "absolute", right: 0, marginRight: "280px"}}>
-              수정
-            </button>
-            <button onClick={onDeleteArticle} style={{ position: "absolute", right: 0, marginRight: "170px"}}>
-              삭제
-            </button>
+            <button onClick={editButtonHandler}>수정</button>
+            <button onClick={onDeleteArticle}>삭제</button>
           </div>
         )}
+        </UtilButton>
       </div>
       <Wrapper>
         <img src={selectedBookInfo.largeImgUrl}></img>
@@ -121,11 +132,14 @@ function DetailForm({
               <tr>
                 <th> 한줄평 </th>
                 {isEditing ? (
+                  <td>
                   <input
                     onChange={summaryHandler}
-                    type="text"
                     value={enteredSummary}
+                    className="summary"
+                    size="30"
                   />
+                  </td>
                 ) : (
                   <td>{enteredSummary}</td>
                 )}
@@ -151,8 +165,7 @@ function DetailForm({
               <p>{enteredTitle}</p>
             )}
           </div>
-          <br>
-          </br>
+          <br></br>
           <h5>내용</h5>
           {isEditing ? (
             <textarea
