@@ -18,9 +18,18 @@ const SearchedBook = (props) => {
   const bookSelectHandler = () => {
     props.onClick(props.book);
   };
+  let tmpUrl;
+
+  tmpUrl = props.book.largeImgUrl.substring(
+    0,
+    props.book.largeImgUrl.length - 5
+  );
+  tmpUrl = tmpUrl + "h.jpg";
+  console.log(tmpUrl);
+
   return (
     <Bookinfo onClick={bookSelectHandler}>
-      <img src={props.book.smallImgUrl}></img>
+      <img src={tmpUrl} alt={props.book.title}></img>
       <Wrapper>
         <p>{props.book.title}</p>
         <p>{props.book.author}</p>

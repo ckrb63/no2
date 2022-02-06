@@ -28,6 +28,7 @@ function BooklogRegisterContainer() {
   //   tmpUrl = tmpUrl + "s.jpg";
   //   console.log(tmpUrl);
   // }
+
   const onSentenceChange = (event) => {
     setOneSentence(event.target.value);
   };
@@ -48,7 +49,7 @@ function BooklogRegisterContainer() {
       rating: rating,
       sentence: oneSentence,
       private: !toggle,
-      date: new Date(),
+      date: new Date()
     };
     if (TitleValue === "" || ContentValue === "") {
       alert("제목과 내용을 입력해주세요.");
@@ -62,7 +63,7 @@ function BooklogRegisterContainer() {
           content: ContentValue,
           summary: oneSentence,
           starRating: rating,
-          readDate: new Date(),
+          readDate: new Date()
         })
         .then(function (response) {
           console.log(response.status);
@@ -105,7 +106,7 @@ function BooklogRegisterContainer() {
           toggleHandler={toggleHandler}
           onSubmitChangeBook={onSubmitChangeBook}
           onSubmitArticle={onSubmitArticle}
-          // tmpUrl={tmpUrl}
+          bookImg={selectedBook.largeImgUrl}
           selectedBook={selectedBook}
           ratingHandler={ratingHandler}
           onSentenceChange={onSentenceChange}
