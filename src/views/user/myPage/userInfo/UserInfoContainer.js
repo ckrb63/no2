@@ -4,6 +4,7 @@ import { UserTable, EditUserForm } from "./UserInfoPresenter";
 import profile from "./asset/ProfilePicture.png";
 import styled from "styled-components";
 import axios from "axios";
+import { setUserInfo } from "../../../../common/reducers/modules/auth";
 import {
   checkId,
   checkEmail,
@@ -11,8 +12,9 @@ import {
   checkPassword,
   checkNameLength,
   checkPhoneNumber,
-  checkPasswordConfim
+  checkPasswordConfim,
 } from "../../validCheck/ValidCheck";
+import { useDispatch, useSelector } from "react-redux";
 const url = "https://i6a305.p.ssafy.io:8443";
 
 const Profile = styled.img`
@@ -25,17 +27,19 @@ const Wrapper = styled.div`
   width: 100%;
 `;
 function UserInfoContainer() {
-  const [users, setUsers] = useState(userList);
-  const [enteredEmail, setEnterdEmail] = useState(userList[0].email);
-  const [enteredName, setEnterdnName] = useState(userList[0].name);
+  const fistuser = useSelector((state) => state.authReducer).memberInfo;
+  const [user, setUser] = useState(fistuser);
+  const [enteredEmail, setEnterdEmail] = useState(user.email);
+  const [enteredName, setEnterdnName] = useState(user.name);
   console.log(enteredName);
-  const [enteredPassword, setEnteredPassword] = useState(userList[0].password);
+  const [enteredPassword, setEnteredPassword] = useState(user.password);
   const [enteredPasswordConfirm, setEnteredPasswordConfirm] = useState(
-    userList[0].password
+    user.password
   );
-  const [enteredNickName, setEnteredNickName] = useState(userList[0].nickname);
-  const [enteredPhone, setEnteredPhone] = useState(userList[0].phoneNumber);
+  const [enteredNickName, setEnteredNickName] = useState(user.nickname);
+  const [enteredPhone, setEnteredPhone] = useState("010-1234-5678");
 
+  const dispatch = useDispatch();
   const emailChangeHandler = (event) => {
     setEnterdEmail(event.target.value);
   };
@@ -55,43 +59,51 @@ function UserInfoContainer() {
   const phoneChangeHandler = (event) => {
     setEnteredPhone(event.target.value);
   };
-
+  const logOut = () => {
+    dispatch(setUserInfo({
+      memberInfo: {
+        seq: "",
+        email: "",
+        password: "",
+        name: "",
+        nickname: "",
+      },
+      jwtToken: "",
+    }));
+    sessionStorage.removeItem("jwtToken");
+    window.location.replace("/login");
+  };
   const deleteUser = (id) => {
     window.location.replace("/");
-    setUsers(users.filter((user) => user.id !== id));
+    // setUsers(users.filter((user) => user.id !== id));
   };
 
   const [editing, setEditing] = useState(false);
 
-  const initialUser = {
-    id: null,
-    name: "",
-    password: "",
-    email: "",
-    nickname: ""
-  };
-
-  const [currentUser, setCurrentUser] = useState(initialUser);
-
-  const editUser = (id, user) => {
+  const editUser = () => {
     setEditing(true);
-    setCurrentUser(user);
   };
 
-  const updateUser = (newUser) => {
-    setUsers(
-      users.map((user) => (user.id === currentUser.id ? newUser : user))
-    );
-    setCurrentUser(initialUser);
+  const updateUser = () => {
+    const newUser = {
+      email: enteredEmail,
+      name: enteredName,
+      password: enteredPassword,
+      nickname: enteredNickName,
+    };
+    setUser(newUser);
     setEditing(false);
+    logOut();
   };
-  function validId() {
+  function validId(event) {
+    event.preventDefault();
     return checkId(enteredEmail, url);
   }
   function validEmail() {
     return checkEmail(enteredEmail);
   }
-  function validNickname() {
+  function validNickname(event) {
+    event.preventDefault();
     return checkNickname(enteredNickName, url);
   }
   function validPassword() {
@@ -113,20 +125,24 @@ function UserInfoContainer() {
   }
   const jwtToken = JSON.parse(sessionStorage.getItem("jwtToken"));
 
+
   const onModify = () => {
     axios
-      .put(url + `/api/v1/members`, {
-        email: enteredEmail,
-        password: enteredPassword,
-        name: enteredName,
-        nickname: enteredNickName,
-        phoneNumber: enteredPhone
-      },
-      {
-        headers: {
-          Authorization: `Bearer ` + jwtToken
+      .put(
+        url + `/api/v1/members`,
+        {
+          email: enteredEmail,
+          password: enteredPassword,
+          name: enteredName,
+          nickname: enteredNickName,
+          phoneNumber: '010-1234-5678',
+        },
+        {
+          headers: {
+            Authorization: `Bearer ` + jwtToken,
+          },
         }
-      })
+      )
       .then(function (response) {
         if (response.status === 201) {
           alert(response.data.data.msg); //modified
@@ -149,7 +165,7 @@ function UserInfoContainer() {
         {!editing ? (
           <div>
             <UserTable
-              users={users}
+              user={user}
               deleteUser={deleteUser}
               editUser={editUser}
             />
@@ -167,11 +183,10 @@ function UserInfoContainer() {
                 checkEmail={validEmail}
                 checkNickname={validNickname}
                 checkPassword={validPassword}
-                checkPhoneNumber={validPhoneNumber}
+                // checkPhoneNumber={validPhoneNumber}
                 checkNameLength={validNameLength}
                 checkPasswordConfirm={validPasswordConfirm}
                 onModify={onModify}
-                currentUser={currentUser}
                 setEditing={setEditing}
                 updateUser={updateUser}
                 emailChange={emailChangeHandler}
@@ -179,13 +194,13 @@ function UserInfoContainer() {
                 passwordConfirmChange={passwordChangeConfirmHandler}
                 nameChange={nameChangeHandler}
                 nicknameChange={nicknameChangeHandler}
-                phoneChange={phoneChangeHandler}
+                // phoneChange={phoneChangeHandler}
                 name={enteredName}
                 email={enteredEmail}
                 password={enteredPassword}
                 passwordConfirm={enteredPasswordConfirm}
                 nickname={enteredNickName}
-                phoneNumber={enteredPhone}
+                // phoneNumber={enteredPhone}
               />
             </div>
           ) : (

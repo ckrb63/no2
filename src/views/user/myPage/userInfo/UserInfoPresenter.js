@@ -6,7 +6,7 @@ import {
   checkNickname,
   checkPassword,
   checkNameLength,
-  checkPhoneNumber
+  checkPhoneNumber,
 } from "../../validCheck/ValidCheck";
 
 const EditUserForm = (props) => {
@@ -17,7 +17,7 @@ const EditUserForm = (props) => {
   const [nameIsValid, setNameIsValid] = useState(true);
   const [passwordIsValid, setPasswordIsValid] = useState(true);
   const [passwordConfirmIsValid, setPasswordConfirmIsValid] = useState(true);
-  const [phoneIsValid, setPhoneIsValid] = useState(true);
+  // const [phoneIsValid, setPhoneIsValid] = useState(true);
   const [nicknameIsValid, setNicknameIsValid] = useState(true);
 
   const emailBlurHandler = () => {
@@ -36,10 +36,10 @@ const EditUserForm = (props) => {
     const isValid = props.checkPasswordConfirm();
     setPasswordConfirmIsValid(isValid);
   };
-  const phoneBlurHandler = () => {
-    const isValid = props.checkPhoneNumber();
-    setPhoneIsValid(isValid);
-  };
+  // const phoneBlurHandler = () => {
+  //   const isValid = props.checkPhoneNumber();
+  //   setPhoneIsValid(isValid);
+  // };
   const nicknameBlurHandler = () => {
     const isValid = props.checkPhoneNumber();
     setNicknameIsValid(isValid);
@@ -50,8 +50,8 @@ const EditUserForm = (props) => {
     passwordIsValid &&
     passwordConfirmIsValid &&
     nicknameIsValid &&
-    emailIsValid &&
-    phoneIsValid
+    emailIsValid
+    // phoneIsValid
   )
     formIsValid = true;
   else formIsValid = false;
@@ -62,10 +62,9 @@ const EditUserForm = (props) => {
       props.name &&
       props.password &&
       props.email &&
-      props.nickname &&
-      props.phoneNumber
+      props.nickname
     )
-      props.updateUser(props);
+      props.updateUser();
     props.onModify();
   };
   const buttonStyle = formIsValid ? "button-primary" : "";
@@ -117,59 +116,53 @@ const EditUserForm = (props) => {
         onChange={props.nicknameChange}
         onBlur={nicknameBlurHandler}
       />
-      <button type="submit" onClick={props.checkNickname}>
+      <button onClick={props.checkNickname}>
         중복확인
       </button>
-      <label>핸드폰번호</label>
+      {/* <label>핸드폰번호</label>
       <input
         type="text"
         value={props.phoneNumber}
         name="phoneNumber"
         onChange={props.phoneChange}
         onBlur={phoneBlurHandler}
-      />
+      /> */}
       {/* <input className="u-full-width" type="text" value={user.phoneNumber} name="phoneNumber" onChange={handleChange} onBlur={props.checkPhoneNumber}/> */}
-      <button
-        className={buttonStyle}
-        disabled={!formIsValid}
-        type="submit"
-        onClick={handleSubmit}
-      >
-        수정하기
-      </button>
-      <button type="submit" onClick={() => props.setEditing(false)}>
-        취소하기
-      </button>
+      <div>
+        <button
+          className={buttonStyle}
+          disabled={!formIsValid}
+          type="submit"
+          onClick={handleSubmit}
+        >
+          수정하기
+        </button>
+        <button type="submit" onClick={() => props.setEditing(false)}>
+          취소하기
+        </button>
+      </div>
     </form>
   );
 };
 
 const UserTable = (props) => {
+  const { name, password, email, nickname } = props.user;
   return (
     <form>
-      {props.users.length > 0 ? (
-        props.users.map((user) => {
-          const { id, name, password, email, nickname, phoneNumber } = user;
-          return (
-            <div key={id}>
-              <label>이름</label>
-              <p>{name}</p>
-              <label>비밀번호</label>
-              <p>{password}</p>
-              <label>이메일</label>
-              <p>{email}</p>
-              <label>닉네임</label>
-              <p>{nickname}</p>
-              <label>핸드폰번호</label>
-              <p>{phoneNumber}</p>
-              <button onClick={() => props.editUser(id, user)}>수정하기</button>
-              <button onClick={() => props.deleteUser(id)}>탈퇴하기</button>
-            </div>
-          );
-        })
-      ) : (
-        <tr>{/* <td colSpan={4}>가입된 회원이 아닙니다.</td> */}</tr>
-      )}
+      <div>
+        <label>이름</label>
+        <p>{name}</p>
+        <label>비밀번호</label>
+        <p>{password}</p>
+        <label>이메일</label>
+        <p>{email}</p>
+        <label>닉네임</label>
+        <p>{nickname}</p>
+        {/* <label>핸드폰번호</label>
+        <p>010-5023-9161</p> */}
+        <button onClick={props.editUser}>수정하기</button>
+        <button>탈퇴하기</button>
+      </div>
     </form>
   );
 };

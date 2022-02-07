@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
-import BookLogCard from "./BooklogCard";
+import BookLogCard from "./BookLogCard";
 import { useSelector } from "react-redux";
 
 const url = "https://i6a305.p.ssafy.io:8443";
@@ -22,19 +22,19 @@ function UserBooklogPresenter() {
   //토큰
   const jwtToken = JSON.parse(sessionStorage.getItem("jwtToken"));
   const user = useSelector((state) => state.authReducer);
-  console.log(user);
-
+  console.log(jwtToken);
   const pageLoading = async () => {
     // console.log(enteredText.current.value);
     const books = await axios.get(
-      url + `/api/v1/booklogs/me/false`,
-      {},
+      url + `/api/v1/booklogs/me?page=1&size=10`,
+      { open: true },
       {
         headers: {
           Authorization: `Bearer ` + jwtToken,
         },
       }
     );
+    console.log(books);
     const bookList = books.data.data.booklogs;
     setTotalCnt(books.data.data.totalCnt);
     setContext(
@@ -46,7 +46,7 @@ function UserBooklogPresenter() {
   };
   // pageLoading();
   useEffect(() => {
-    pageLoading(1);
+    pageLoading();
   }, []);
   return (
     <div>
