@@ -17,14 +17,23 @@ function BooklogDetailContainer(props) {
   const [enteredToggle, setEnteredToggle] = useState(false);
   const location = useLocation();
   const bookLogSeq = location.state.logSeq;
-  const bookInfoSeq = location.state.infoSeq;
+  let bookInfoSeq;
   const [enteredRating, setEnteredRating] = useState(0);
 
   let bookLogData;
   let bookInfoData;
+  const jwtToken = JSON.parse(sessionStorage.getItem("jwtToken"));
+  const user = useSelector((state) => state.authReducer);
+
   const getBookLog = async () => {
     setIsLoading(true);
-    const bookData1 = await axios.get(url + `/api/v1/booklogs/${bookLogSeq}`);
+    const bookData1 = await axios.get(url + `/api/v1/booklogs/${bookLogSeq}`, {
+      headers: {
+        Authorization: `Bearer ` + jwtToken,
+      },
+    });
+    console.log(bookData1);
+    bookInfoSeq = bookData1.data.data.booklog.bookInfoSeq;
     const bookData2 = await axios.get(url + `/api/v1/bookinfos/${bookInfoSeq}`);
     console.log(bookData2);
     bookLogData = bookData1.data.data.booklog;
@@ -44,9 +53,6 @@ function BooklogDetailContainer(props) {
   }, []);
 
   //토큰
-  const jwtToken = JSON.parse(sessionStorage.getItem("jwtToken"));
-  const user = useSelector((state) => state.authReducer);
-  console.log(user);
 
   const saveArticle = async (event) => {
     event.preventDefault();

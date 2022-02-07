@@ -4,63 +4,105 @@ import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import BookLogCard from "./BookLogCard";
 import { useSelector } from "react-redux";
+import Pagination from "react-js-pagination";
 
 const url = "https://i6a305.p.ssafy.io:8443";
-
-function UserBooklogPresenter() {
-  const { path } = useParams();
-  const [totalCnt, setTotalCnt] = useState(0);
-  const [context, setContext] = useState([]);
-
-  const Title = styled.div`
+const Title = styled.div`
     display: flex;
     width: 80rem;
     padding-left: 10px;
     justify-content: center;
   `;
+  const BookLog = styled.div`
+    /* display: flex; */
+    width: 100%;
+    text-align: center;
+    /* margin: 5rem; */
+  `;
+  const Button = styled.button`
+    text-align: right;
+    margin-right: 8rem;
+  `;
+  const Header = styled.div`
+    display: flex;
+    justify-content: space-between;
+    span{
+      margin-left: 8rem;
+    }
+    label{
+      display: inline-block;
+    }
+  `;
+function UserBooklogPresenter() {
+  const { path } = useParams();
+  const [totalCnt, setTotalCnt] = useState(0);
+  const [context, setContext] = useState([]);
+  const [page, setPage] = useState(1);
+  const [isOpen, setIsOpen] = useState(false);
 
+  
   //토큰
   const jwtToken = JSON.parse(sessionStorage.getItem("jwtToken"));
   const user = useSelector((state) => state.authReducer);
-  console.log(jwtToken);
   const pageLoading = async () => {
     // console.log(enteredText.current.value);
     const books = await axios.get(
-      url + `/api/v1/booklogs/me?page=1&size=10&all=true`,
+      url + `/api/v1/booklogs/me?page=${page}&size=10&all=${!isOpen}`,
       {
         headers: {
           Authorization: `Bearer ` + jwtToken,
         },
       }
     );
-    console.log(books);
     const bookList = books.data.data.booklogs;
     setTotalCnt(books.data.data.totalCnt);
     setContext(
       bookList.map((book) => {
-        console.log(book);
-        return <BookLogCard key={book.booklogSeq} book={book} />;
+        return (
+          <Link
+            key={book.booklogSeq}
+            to="/booklogdetail"
+            state={{ logSeq: book.booklogSeq}}
+          >
+            <BookLogCard key={book.booklogSeq} book={book} />
+          </Link>
+        );
       })
     );
   };
   // pageLoading();
   useEffect(() => {
     pageLoading();
-  }, []);
+  }, [page,isOpen]);
+  const handlePageChange = (event) => {
+    setPage(event);
+  };
+  const checkBoxHandler = (event) => {
+    setIsOpen(event.target.checked);
+    setPage(1);
+  };
   return (
     <div>
       <h2>나의 북로그</h2>
       <div>
-        <Link to="/booklogdetail" state={{ logSeq: 1, infoSeq: 1 }}>
-          <div>{context}</div>
-        </Link>
-        <Link to="/booklogregister">
-          <button
-            style={{ position: "absolute", right: 0, marginRight: "20px" }}
-          >
-            작성
-          </button>
-        </Link>
+        <Header>
+        <span>
+          <label>공개된 북로그만 보기</label>
+          <input value={isOpen} onChange={checkBoxHandler} type="checkbox"/>
+        </span>
+        <Button>작성</Button>
+        </Header>
+        <BookLog>{context}</BookLog>
+        <Link to="/booklogregister"></Link>
+        <Pagination
+          activePage={page}
+          itemsCountPerPage={10}
+          totalItemsCount={totalCnt}
+          pageRangeDisplayed={5}
+          prevPageText={"‹"}
+          nextPageText={"›"}
+          onChange={handlePageChange}
+        />
       </div>
     </div>
   );

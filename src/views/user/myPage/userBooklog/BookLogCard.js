@@ -1,12 +1,13 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-
+import Pagination from "react-js-pagination";
 const Card = styled.div`
   width: 30rem;
   height: 18rem;
-  float: left;
-  margin: 0.5rem;
+  /* float: left; */
+  display: inline-block;
+  margin: 1rem 3rem;
   padding: 0.7rem;
   border-radius: 5%;
   box-shadow: 4px 5px 7px 2px lightgrey;
