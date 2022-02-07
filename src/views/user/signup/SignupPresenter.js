@@ -14,6 +14,7 @@ const SignupTemplateBlock = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
 const SignupHeadBlock = styled.div`
   padding-top: 10px;
   padding-bottom: 14px;
@@ -41,6 +42,7 @@ const SignupFormBlock = styled.div`
   padding-bottom: 48px;
   overflow-y: auto;
 `;
+
 const SignupButton = styled.button`
   width: 100px;
   height: 50px;
@@ -152,4 +154,5 @@ function Signup({
     </SignupTemplateBlock>
   );
 }
+
 export default Signup;

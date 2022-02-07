@@ -3,7 +3,7 @@ import axios from "axios";
 import { useLocation } from "react-router-dom";
 import DetailForm from "./BooklogDetailPresenter";
 
-const url = "https://77e1dca6-cd01-4930-ae25-870e7444cc55.mock.pstmn.io";
+const url = "https://i6a305.p.ssafy.io:8443";
 
 function BooklogDetailContainer(props) {
   const [isEditing, setIsEditing] = useState(false);

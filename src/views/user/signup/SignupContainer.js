@@ -1,15 +1,16 @@
 import Signup from "./SignupPresenter";
-import React, { useState,useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import {
   checkId,
   checkEmail,
   checkNickname,
+  checkPassword,
   checkNameLength,
   checkPhoneNumber,
-  checkPhoneDuplicate,
-  checkPassword
+  checkPhoneDuplicate
 } from "../validCheck/ValidCheck";
+
 function SignupContainer() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,17 +18,20 @@ function SignupContainer() {
   const [name, setName] = useState("");
   const [nickname, setNickname] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [checkValid, setCheckValid]= useState(true);
   const url = "http://i6a305.p.ssafy.io:8080";
+
   const onEmailHandler = (event) => {
     setEmail(event.currentTarget.value);
   };
+
   const onPasswordHandler = (event) => {
     setPassword(event.currentTarget.value);
   };
+
   const onPasswordConfirmHandler = (event) => {
     setPasswordConfirm(event.currentTarget.value);
   };
+
   const onNameHandler = (event) => {
     setName(event.currentTarget.value);
   };
@@ -37,6 +41,7 @@ function SignupContainer() {
   const onPhoneNumberHandler = (event) => {
     setPhoneNumber(event.currentTarget.value);
   };
+
   function CheckId() {
     checkId(email, url);
   }
@@ -47,8 +52,7 @@ function SignupContainer() {
     checkNickname(nickname, url);
   }
   function CheckPassword() {
-    checkPassword(password, email, nickname, name,checkValidHandler);
-    
+    checkPassword(password, passwordConfirm, email, nickname, name);
   }
   function CheckNameLength() {
     checkNameLength(name);
@@ -56,19 +60,11 @@ function SignupContainer() {
   function CheckPhoneNumber() {
     checkPhoneNumber(phoneNumber);
   }
+
   function CheckPhoneDuplicate(){
     checkPhoneDuplicate(phoneNumber,url);
   }
   
-  function checkPasswordConfim(password, passwordConfirm){
-    if (password !== passwordConfirm) {
-      return false;
-    }
-    return true;
-  }
-  function checkValidHandler(param){
-    setCheckValid(param);
-  }
   const onCreate = () => {
     if (
       email === "" ||
@@ -80,9 +76,8 @@ function SignupContainer() {
     ) {
       alert("입력하지 않은 정보가 있습니다. 확인해주세요.");
     } else {
-      console.log(checkValid);
       if (
-        checkValid===true
+        checkPassword(password, passwordConfirm, email, nickname, name) === true
       ) {
         console.log(email, password, name, nickname, phoneNumber);
         axios
@@ -115,6 +110,7 @@ function SignupContainer() {
       }
     }
   };
+
   return ( 
     <>
       <Signup

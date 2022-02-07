@@ -6,7 +6,7 @@ import Modal from "react-modal";
 import axios from "axios";
 import RegisterForm from "./BooklogRegisterPresenter";
 
-const url = "http://i6a305.p.ssafy.io:8080";
+const url = "https://i6a305.p.ssafy.io:8443";
 // const { title, author, publisher, publicationDate, largeImgUrl, seq } =
 //   BOOKINFO;
 
