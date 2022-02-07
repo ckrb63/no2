@@ -5,7 +5,7 @@ import Modal from "react-modal";
 // import "./RegisterPage.css"
 import axios from "axios";
 import RegisterForm from "./BooklogRegisterPresenter";
-
+import { useSelector } from "react-redux";
 const url = "https://i6a305.p.ssafy.io:8443";
 // const { title, author, publisher, publicationDate, largeImgUrl, seq } =
 //   BOOKINFO;
@@ -40,6 +40,10 @@ function BooklogRegisterContainer() {
   };
   // console.log(ContentValue);
 
+  //토큰
+  const jwtToken = JSON.parse(sessionStorage.getItem("jwtToken"));
+  const user=useSelector(state => state.authReducer);
+  // console.log(user.memberInfo.seq);
   const onSubmitArticle = (event) => {
     event.preventDefault();
     const article = {
@@ -55,14 +59,20 @@ function BooklogRegisterContainer() {
     } else {
       axios
         .post(url + `/api/v1/booklogs`, {
-          memberSeq: 1,
+          memberSeq: user.memberInfo.seq,
           bookInfoSeq: selectedBook.seq,
           title: TitleValue,
           isOpen: !toggle,
           content: ContentValue,
           summary: oneSentence,
           starRating: rating,
-          readDate: new Date()
+          // readDate: new Date()
+        },
+        //토큰
+        {
+          headers: {
+            Authorization: `Bearer ` +jwtToken
+          }
         })
         .then(function (response) {
           console.log(response.status);
