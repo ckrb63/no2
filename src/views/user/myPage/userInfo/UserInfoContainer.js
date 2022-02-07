@@ -13,7 +13,7 @@ import {
   checkPhoneNumber,
   checkPasswordConfim
 } from "../../validCheck/ValidCheck";
-const url = "https://77e1dca6-cd01-4930-ae25-870e7444cc55.mock.pstmn.io";
+const url = "https://i6a305.p.ssafy.io:8443";
 
 const Profile = styled.img`
   width: 150px;
@@ -111,6 +111,7 @@ function UserInfoContainer() {
   function validPhoneNumber() {
     return checkPhoneNumber(enteredPhone);
   }
+  const jwtToken = JSON.parse(sessionStorage.getItem("jwtToken"));
 
   const onModify = () => {
     axios
@@ -120,6 +121,11 @@ function UserInfoContainer() {
         name: enteredName,
         nickname: enteredNickName,
         phoneNumber: enteredPhone
+      },
+      {
+        headers: {
+          Authorization: `Bearer ` + jwtToken
+        }
       })
       .then(function (response) {
         if (response.status === 201) {
