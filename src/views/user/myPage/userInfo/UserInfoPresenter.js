@@ -9,6 +9,13 @@ import {
   checkPhoneNumber,
 } from "../../validCheck/ValidCheck";
 
+const Form2 = styled.div`
+  text-align: left;
+`;
+
+const Form1 = styled.div`
+  margin-left: 35rem;
+`;
 const EditUserForm = (props) => {
   // useEffect(() => {
   //     setUser(props.currentUser)
@@ -58,12 +65,7 @@ const EditUserForm = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (
-      props.name &&
-      props.password &&
-      props.email &&
-      props.nickname
-    )
+    if (props.name && props.password && props.email && props.nickname)
       props.updateUser();
     props.onModify();
   };
@@ -73,53 +75,52 @@ const EditUserForm = (props) => {
   // };
 
   return (
-    <form>
-      <label>이름</label>
-      <input
-        type="text"
-        value={props.name}
-        name="name"
-        onChange={props.nameChange}
-        onBlur={nameBlurHandler}
-      />
-      <label>비밀번호</label>
-      <input
-        type="password"
-        value={props.password}
-        name="password"
-        onChange={props.passwordChange}
-        onBlur={passwordBlurHandler}
-      />
-      <label>비밀번호확인</label>
-      <input
-        type="password"
-        value={props.passwordConfirm}
-        name="password"
-        onChange={props.passwordConfirmChange}
-        onBlur={passwordConfirmBlurHandler}
-      />
-      <label>이메일</label>
-      <input
-        type="text"
-        value={props.email}
-        name="email"
-        onChange={props.emailChange}
-        onBlur={emailBlurHandler}
-      />
-      {/* <input className="u-full-width" type="text" value={user.email} name="email" onChange={handleChange} onBlur={props.checkEmail}/> */}
-      <button onClick={props.checkId}>중복확인</button>
-      <label>닉네임</label>
-      <input
-        type="text"
-        value={props.nickname}
-        name="nickname"
-        onChange={props.nicknameChange}
-        onBlur={nicknameBlurHandler}
-      />
-      <button onClick={props.checkNickname}>
-        중복확인
-      </button>
-      {/* <label>핸드폰번호</label>
+    <Form1>
+      <Form2>
+        <label>이름</label>
+        <input
+          type="text"
+          value={props.name}
+          name="name"
+          onChange={props.nameChange}
+          onBlur={nameBlurHandler}
+        />
+        <label>비밀번호</label>
+        <input
+          type="password"
+          value={props.password}
+          name="password"
+          onChange={props.passwordChange}
+          onBlur={passwordBlurHandler}
+        />
+        <label>비밀번호확인</label>
+        <input
+          type="password"
+          value={props.passwordConfirm}
+          name="password"
+          onChange={props.passwordConfirmChange}
+          onBlur={passwordConfirmBlurHandler}
+        />
+        <label>이메일</label>
+        <input
+          type="text"
+          value={props.email}
+          name="email"
+          onChange={props.emailChange}
+          onBlur={emailBlurHandler}
+        />
+        {/* <input className="u-full-width" type="text" value={user.email} name="email" onChange={handleChange} onBlur={props.checkEmail}/> */}
+        <button onClick={props.checkId}>중복확인</button>
+        <label>닉네임</label>
+        <input
+          type="text"
+          value={props.nickname}
+          name="nickname"
+          onChange={props.nicknameChange}
+          onBlur={nicknameBlurHandler}
+        />
+        <button onClick={props.checkNickname}>중복확인</button>
+        {/* <label>핸드폰번호</label>
       <input
         type="text"
         value={props.phoneNumber}
@@ -127,33 +128,34 @@ const EditUserForm = (props) => {
         onChange={props.phoneChange}
         onBlur={phoneBlurHandler}
       /> */}
-      {/* <input className="u-full-width" type="text" value={user.phoneNumber} name="phoneNumber" onChange={handleChange} onBlur={props.checkPhoneNumber}/> */}
-      <div>
-        <button
-          className={buttonStyle}
-          disabled={!formIsValid}
-          type="submit"
-          onClick={handleSubmit}
-        >
-          수정하기
-        </button>
-        <button type="submit" onClick={() => props.setEditing(false)}>
-          취소하기
-        </button>
-      </div>
-    </form>
+        {/* <input className="u-full-width" type="text" value={user.phoneNumber} name="phoneNumber" onChange={handleChange} onBlur={props.checkPhoneNumber}/> */}
+        <div>
+          <button
+            className={buttonStyle}
+            disabled={!formIsValid}
+            type="submit"
+            onClick={handleSubmit}
+          >
+            수정하기
+          </button>
+          <button type="submit" onClick={() => props.setEditing(false)}>
+            취소하기
+          </button>
+        </div>
+      </Form2>
+    </Form1>
   );
 };
 
 const UserTable = (props) => {
   const { name, password, email, nickname } = props.user;
   return (
-    <form>
-      <div>
+    <Form1>
+      <Form2>
         <label>이름</label>
         <p>{name}</p>
         <label>비밀번호</label>
-        <p>{password}</p>
+        <p>*********</p>
         <label>이메일</label>
         <p>{email}</p>
         <label>닉네임</label>
@@ -162,8 +164,8 @@ const UserTable = (props) => {
         <p>010-5023-9161</p> */}
         <button onClick={props.editUser}>수정하기</button>
         <button>탈퇴하기</button>
-      </div>
-    </form>
+      </Form2>
+    </Form1>
   );
 };
 

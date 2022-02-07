@@ -159,7 +159,11 @@ function UserInfoContainer() {
     <div className="container">
       <div className="title">
         <h2>나의 정보수정</h2>
+        <hr></hr>
         <Profile src={profile}></Profile>
+        <br></br>
+        <br></br>
+        <br></br>
       </div>
       <div className="usertable">
         {!editing ? (
