@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const Card = styled.div`
   width: 30rem;
@@ -23,6 +24,7 @@ const InnerGrid = styled.div`
 
 const ImgGrid = styled(InnerGrid)`
   width: 40%;
+  position: relative;
 `;
 
 const Img = styled.img`
@@ -50,19 +52,52 @@ const Title = styled.h6`
   margin-top: 0.6rem;
 `;
 
+const Private = styled.div`
+  width: 1rem;
+  height: 1rem;
+  border-radius: 10rem;
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background-color: #3B4CF6;
+  
+  ${({ active }) => active && `
+    background: #ED544A;
+  `}
+  .description{
+    color: #777;
+    position: absolute;
+    top:-2.5rem;
+    border: 1px solid #777;
+    background-color: white;
+    width: 4rem;
+  }
+`;
 
-function BooklogCard({ booklog }) {
 
+function BooklogCard(props) {
+  const [isEntered, setIsEntered] = useState(false);
+  const mouseEnterHandler = () => {
+    setIsEntered(true);
+  };
+  const mouseLeaveHandler = () => {
+    setIsEntered(false);
+  };
+  const {imgUrl, title, createdDate, open} = props.book;
+  const description = open ? <div className="description">공개</div> : <div className="description">비공개</div>;
   return (
     <Card>
       <ImgGrid>
-        <Img src={booklog.imgUrl} alt="book img"></Img>
+        <Img src={imgUrl} alt="book img"></Img>
       </ImgGrid>
       <InnerGrid>
         <ContentLink to="/">
-          <Title>{booklog.title}</Title>
+          <Title>{title}</Title>
         </ContentLink>
-        <Date>{booklog.createdDate}</Date>
+        <Date>{createdDate}</Date>
+        <Private active={!open} onMouseEnter={mouseEnterHandler} onMouseLeave={mouseLeaveHandler}>
+          {isEntered&&description}
+        </Private>
       </InnerGrid>
     </Card>
   );

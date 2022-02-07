@@ -26,8 +26,7 @@ function UserBooklogPresenter() {
   const pageLoading = async () => {
     // console.log(enteredText.current.value);
     const books = await axios.get(
-      url + `/api/v1/booklogs/me?page=1&size=10`,
-      { open: true },
+      url + `/api/v1/booklogs/me?page=1&size=10&all=true`,
       {
         headers: {
           Authorization: `Bearer ` + jwtToken,
@@ -40,7 +39,7 @@ function UserBooklogPresenter() {
     setContext(
       bookList.map((book) => {
         console.log(book);
-        return <BookLogCard book={book} />;
+        return <BookLogCard key={book.booklogSeq} book={book} />;
       })
     );
   };
