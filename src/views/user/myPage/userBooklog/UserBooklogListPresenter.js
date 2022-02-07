@@ -3,9 +3,9 @@ import styled from "styled-components";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import BookLogCard from "./BooklogCard";
+import { useSelector } from "react-redux";
 
 const url = "https://i6a305.p.ssafy.io:8443";
-const postmanUrl = "https://77e1dca6-cd01-4930-ae25-870e7444cc55.mock.pstmn.io";
 
 function UserBooklogPresenter() {
   const { path } = useParams();
@@ -19,12 +19,22 @@ function UserBooklogPresenter() {
     justify-content: center;
   `;
 
+  //토큰
+  const jwtToken = JSON.parse(sessionStorage.getItem("jwtToken"));
+  const user = useSelector((state) => state.authReducer);
+  console.log(user);
+
   const pageLoading = async () => {
     // console.log(enteredText.current.value);
     const books = await axios.get(
-      postmanUrl + `/api/v1/booklogs/me?page=1&size=10`
+      url + `/api/v1/booklogs/me/false`,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ` + jwtToken,
+        },
+      }
     );
-    
     const bookList = books.data.data.booklogs;
     setTotalCnt(books.data.data.totalCnt);
     setContext(
@@ -47,7 +57,8 @@ function UserBooklogPresenter() {
         </Link>
         <Link to="/booklogregister">
           <button
-            style={{ position: "absolute", right: 0, marginRight: "20px" }}>
+            style={{ position: "absolute", right: 0, marginRight: "20px" }}
+          >
             작성
           </button>
         </Link>

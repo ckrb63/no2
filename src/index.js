@@ -79,7 +79,7 @@ render(
               </Route>
               <Route path="/mypage" element={<MyPage />}>
                 <Route index element={<UserInfoContainer />} />
-                <Route path="mybooklog" />
+                <Route path="mybooklog"/>
                 <Route path="mybookclub" />
                 <Route path="mychallenge" />
               </Route>

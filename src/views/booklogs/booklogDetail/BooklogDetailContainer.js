@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import DetailForm from "./BooklogDetailPresenter";
+import { useSelector } from "react-redux";
 
 const url = "https://i6a305.p.ssafy.io:8443";
 
@@ -42,28 +43,57 @@ function BooklogDetailContainer(props) {
     getBookLog();
   }, []);
 
+  //토큰
+  const jwtToken = JSON.parse(sessionStorage.getItem("jwtToken"));
+  const user = useSelector((state) => state.authReducer);
+  console.log(user);
+
   const saveArticle = async (event) => {
     event.preventDefault();
-    const response = await axios.put(url + `/api/v1/booklogs/${bookLogSeq}`, {
-      memberSeq: 1,
-      booklogSeq: bookInfoSeq,
-      bookInfoSeq: bookInfoSeq,
-      title: enteredTitle,
-      isOpen: !enteredToggle,
-      content: enteredContent,
-      summary: enteredSummary,
-      starRating: enteredRating,
-      readDate: new Date()
-    });
+    const response = await axios.put(
+      url + `/api/v1/booklogs/${bookLogSeq}`,
+      {
+        memberSeq: user.memberInfo.seq,
+        booklogSeq: bookInfoSeq,
+        bookInfoSeq: bookInfoSeq,
+        title: enteredTitle,
+        isOpen: !enteredToggle,
+        content: enteredContent,
+        summary: enteredSummary,
+        starRating: enteredRating,
+        readDate: new Date(),
+      },
+      {
+        headers: {
+          Authorization: `Bearer ` + jwtToken,
+        },
+      }
+    );
     setIsEditing(!isEditing);
     alert(response.data.data.msg);
   };
 
   const onDeleteArticle = async (event) => {
     event.preventDefault();
-    const response = await axios.delete(url + `/api/v1/booklogs/${bookLogSeq}`);
-    window.location.replace("/mypage/mybooklog");
-    alert(response.data.data.msg);
+    axios
+      .delete(
+        url + `/api/v1/booklogs/${bookLogSeq}`,
+        {},
+        {
+          headers: {
+            Authorization: "Bearer " + jwtToken,
+          },
+        }
+      )
+      .then(function (response) {
+        console.log(response.status);
+        if (response.status === 204) {
+          alert(response.data.data.msg);
+          window.location.replace("/mypage/mybooklog");
+        } else {
+          alert(response.data.data.msg);
+        }
+      });
   };
   const editButtonHandler = () => {
     setIsEditing(!isEditing);
