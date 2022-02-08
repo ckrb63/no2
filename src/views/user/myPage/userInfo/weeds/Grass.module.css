@@ -5,9 +5,11 @@
   border-radius: 3px;
   margin: 1px;
   font-size: small;
+  white-space: pre-line;
 }
 .wrapper{
   display: inline-block;
+  
   position: relative;
 }
 .wrapper .floater{
@@ -18,9 +20,9 @@
   color: white;
   font-size: .8rem;
   z-index: 5;
-  width: 12rem;
+  width: 10rem;
   border-radius: 5px;
-  top: -2.5rem;
+  top: -4.4rem;
   padding: .5rem;
 }
 
