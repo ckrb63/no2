@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import userList from "./asset/data";
 import { UserTable, EditUserForm } from "./UserInfoPresenter";
-import profile from "./asset/ProfilePicture.png";
 import styled from "styled-components";
 import axios from "axios";
 import { setUserInfo } from "../../../../common/reducers/modules/auth";
@@ -17,11 +16,11 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 const url = "https://i6a305.p.ssafy.io:8443";
 
-const Profile = styled.img`
-  width: 150px;
-  height: 150px;
-  border-radius: 100%;
-`;
+// const Profile = styled.img`
+//   width: 150px;
+//   height: 150px;
+//   border-radius: 100%;
+// `;
 const Wrapper = styled.div`
   text-align: center;
   width: 100%;
@@ -31,7 +30,7 @@ function UserInfoContainer() {
   const [user, setUser] = useState(fistuser);
   const [enteredEmail, setEnterdEmail] = useState(user.email);
   const [enteredName, setEnterdnName] = useState(user.name);
-  console.log(enteredName);
+  // console.log(enteredName);
   const [enteredPassword, setEnteredPassword] = useState(user.password);
   const [enteredPasswordConfirm, setEnteredPasswordConfirm] = useState(
     user.password
@@ -135,7 +134,7 @@ function UserInfoContainer() {
           password: enteredPassword,
           name: enteredName,
           nickname: enteredNickName,
-          phoneNumber: '010-1234-5678',
+          // phoneNumber: '010-1234-5678',
         },
         {
           headers: {
@@ -159,9 +158,8 @@ function UserInfoContainer() {
     <div className="container">
       <div className="title">
         <h2>나의 정보수정</h2>
-        <hr></hr>
-        <Profile src={profile}></Profile>
-        <br></br>
+        {/* <hr></hr>
+        <Profile src={profile}></Profile> */}
         <br></br>
         <br></br>
       </div>
