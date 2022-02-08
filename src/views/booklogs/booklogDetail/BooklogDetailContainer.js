@@ -54,8 +54,7 @@ function BooklogDetailContainer(props) {
 
   const saveArticle = async (event) => {
     event.preventDefault();
-    console.log(bookLogSeq);
-    console.log(bookInfoSeq);
+    console.log(enteredToggle);
     const response = await axios.put(
       url + `/api/v1/booklogs/${bookLogSeq}`,
       {
@@ -63,7 +62,7 @@ function BooklogDetailContainer(props) {
         booklogSeq: bookLogSeq,
         bookInfoSeq: bookInfoSeq,
         title: enteredTitle,
-        isOpen: !enteredToggle,
+        isOpen: enteredToggle,
         content: enteredContent,
         summary: enteredSummary,
         starRating: enteredRating,
