@@ -3,7 +3,6 @@ import react, { useState } from "react";
 import styled from "styled-components";
 
 const StyledWeeds = styled.div `
-
   width: 16rem;
   height: 24rem;
 `;
@@ -34,6 +33,10 @@ const Weeds = (props) => {
     
     // return data.date ===
   });
+
+  console.log(weed);
+  // console.log(props.datas);
+
   props.datas.map((data)=>{
     for(i=0;i<84;i++){
       if(data.date === weed[i].date){
@@ -41,6 +44,7 @@ const Weeds = (props) => {
       }
     }
   })
+  // console.log(weed);
 
   const context = weed.map((data)=>{
     return <Grass count={data.count} date={data.date}/>

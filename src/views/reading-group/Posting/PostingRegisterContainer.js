@@ -1,8 +1,10 @@
+//독서모임 포스팅 등록
+
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
 
-function BookclubPostingRegisterContainer() {
+function PostingRegisterContainer() {
   const Wrapper = styled.div`
     text-align: center;
     justify-content: center;
@@ -22,8 +24,13 @@ function BookclubPostingRegisterContainer() {
     font-size: 1.5rem;
     border-radius: 1.5rem;
     padding-left: 25rem;
+    border: 1px solid #cccccc;
+    padding-top: 40px;
+    padding-bottom: 40px;
   `;
-
+  const Button = styled.div`
+  margin-left: 600px;
+  `
   return (
     <Wrapper>
       {/* <h2>독서모임 포스팅 작성</h2> */}
@@ -111,12 +118,20 @@ function BookclubPostingRegisterContainer() {
           placeholder="텍스트를 입력해주세요."
         />
         <label>독서모임 기간</label>
-        <input size="1" type="text" name="startmonth" />월
-        <input size="1" type="text" name="startdate" />일 ~
-        <input size="1" type="text" name="endmonth" />월
-        <input size="1" type="text" name="enddate" />일 / 주
-        <input size="1" type="text" name="startmonth" />회<br></br>
-        <input id="월" value="월" name="platform" type="radio" /> 월
+        <input type="date" id="startDate" name="startDate"/> 부터
+        <input type="date" id="endDate" name="endDate" style={{ marginLeft: 20 }}/> 까지
+        <br></br>
+        주
+        <select name = 'week'>
+          <option value = "one">1회</option>
+          <option value = "two">2회</option>
+          <option value = "three">3회</option> 
+          <option value = "four">4회</option>
+          <option value = "five">5회</option>
+          <option value = "six">6회</option>
+          <option value = "seven">7회</option>
+        </select>
+        <input id="월" value="월" name="platform" type="radio" style={{ marginLeft: 20 }}/> 월
         <input
           id="화"
           value="화"
@@ -165,17 +180,24 @@ function BookclubPostingRegisterContainer() {
           style={{ marginLeft: 20 }}
         />{" "}
         일<label>최대인원</label>
-        <input size="1" type="text" name="max" />명<label>모집 마감 날짜</label>
-        <input size="1" type="text" name="lastmonth" />월
-        <input size="1" type="text" name="lastdate" />일
+        <select name = 'max'>
+          <option value = "three">3명</option>
+          <option value = "four">4명</option>
+          <option value = "five">5명</option>
+          <option value = "six">6명</option>
+          <option value = "seven">7명</option>
+          <option value = "eight">8명</option>
+          <option value = "nine">9명</option>
+          <option value = "ten">10명</option>
+        </select>
+
+        <label>모집 마감 날짜</label>
+        <input type="date" id="deadline" name="deadline" />
+        <Button><button>저장</button></Button>
+        
       </Wrapper2>
-      <button
-        //   onClick={onSubmitArticle}
-        style={{ position: "absolute", right: 0, marginRight: "300px" }}
-      >
-        저장
-      </button>
+      
     </Wrapper>
   );
 }
-export default BookclubPostingRegisterContainer;
+export default PostingRegisterContainer;

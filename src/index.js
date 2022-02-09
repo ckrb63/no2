@@ -24,6 +24,9 @@ import Header from "./views/main/header/Header";
 import "./common/css/index.css";
 import BooklogRegisterContainer from "./views/booklogs/booklogRegister/BooklogRegisterContainer";
 import BooklogDetailContainer from "./views/booklogs/booklogDetail/BooklogDetailContainer";
+import PostingRegisterContainer from "./views/reading-group/Posting/PostingRegisterContainer";
+import PostingListContainer from "./views/reading-group/Posting/PostingListContainer";
+import PostingDetailContainer from "./views/reading-group/Posting/PostingDetailContainer";
 
 const store = createStore(rootReducer, composeWithDevTools()); // 스토어를 만듭니다.
 const listener = () => {
@@ -90,6 +93,18 @@ render(
               <Route
                 path="/booklogdetail"
                 element={<BooklogDetailContainer />}
+              />
+              <Route
+                path="/postingregister"
+                element={<PostingRegisterContainer />}
+              />
+              <Route
+                path="/postinglist"
+                element={<PostingListContainer/>}
+              />
+              <Route
+                path="/postingdetail"
+                element={<PostingDetailContainer/>}
               />
             </Routes>
           </Wrapper>

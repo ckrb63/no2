@@ -6,7 +6,7 @@ import { Route, Routes } from "react-router-dom";
 import Sidebar from "../../main/Sidebar";
 import styled from "styled-components";
 import Login from "../login/LoginContainer";
-
+import PrivateRoute from "../../../common/lib/PrivateRoute";
 const Center = styled.div`
   height: 90vh;
   display: flex;
