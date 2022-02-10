@@ -99,7 +99,7 @@ function PostingRegisterContainer() {
           id="화"
           value="화"
           name="days"
-          type="radio"
+          type="checkbox"
           style={{ marginLeft: 20 }}
         />{" "}
         화
@@ -107,7 +107,7 @@ function PostingRegisterContainer() {
           id="수"
           value="수"
           name="days"
-          type="radio"
+          type="checkbox"
           style={{ marginLeft: 20 }}
         />{" "}
         수
@@ -115,7 +115,7 @@ function PostingRegisterContainer() {
           id="목"
           value="목"
           name="days"
-          type="radio"
+          type="checkbox"
           style={{ marginLeft: 20 }}
         />{" "}
         목
@@ -123,7 +123,7 @@ function PostingRegisterContainer() {
           id="금"
           value="금"
           name="days"
-          type="radio"
+          type="checkbox"
           style={{ marginLeft: 20 }}
         />{" "}
         금
@@ -131,7 +131,7 @@ function PostingRegisterContainer() {
           id="토"
           value="토"
           name="days"
-          type="radio"
+          type="checkbox"
           style={{ marginLeft: 20 }}
         />{" "}
         토
@@ -139,7 +139,7 @@ function PostingRegisterContainer() {
           id="일"
           value="일"
           name="days"
-          type="radio"
+          type="checkbox"
           style={{ marginLeft: 20 }}
         />{" "}
         일<label>최대인원</label>
