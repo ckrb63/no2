@@ -7,9 +7,9 @@ export const setUserInfo = (info) => ({
     email: info.memberInfo.email,
     password: info.memberInfo.password,
     name: info.memberInfo.name,
-    nickname: info.memberInfo.nickname,
+    nickname: info.memberInfo.nickname
   },
-  jwtToken: info.jwtToken,
+  jwtToken: info.jwtToken
 });
 
 const initialState = {
@@ -19,9 +19,9 @@ const initialState = {
     email: "",
     password: "",
     name: "",
-    nickname: "",
+    nickname: ""
   },
-  jwtToken: "",
+  jwtToken: ""
 };
 
 export default function auth(state = initialState, action) {
@@ -30,7 +30,7 @@ export default function auth(state = initialState, action) {
       return {
         ...state,
         memberInfo: action.memberInfo,
-        jwtToken: action.jwtToken,
+        jwtToken: action.jwtToken
       };
     default:
       return state;
