@@ -84,7 +84,7 @@ render(
                 <Route index element={<UserInfoContainer />} />
                 <Route path="mybooklog"/>
                 <Route path="mybookclub" />
-                <Route path="mychallenge" />
+                <Route path="myheartbooklog" />
               </Route>
               <Route
                 path="/booklogregister"
