@@ -36,8 +36,8 @@ function PostingRegisterContainer() {
       {/* <h2>독서모임 포스팅 작성</h2> */}
       <img
         src={"https://t1.daumcdn.net/cfile/tistory/2520CF4753E942C332"}
-        height="200px"
-        width="200px"
+        height="150px"
+        width="150px"
       ></img>
       <Info>
         <h5>모임의 성격을 알려주세요!</h5>
@@ -94,7 +94,7 @@ function PostingRegisterContainer() {
           <option value = "six">6회</option>
           <option value = "seven">7회</option>
         </select> */}
-        <input id="월" value="월" name="days" type="radio" /> 월
+        <input id="월" value="월" name="days" type="checkbox" /> 월
         <input
           id="화"
           value="화"

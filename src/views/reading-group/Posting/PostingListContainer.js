@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 function PostingListContainer() {
   const Postinginfo = styled.div`
@@ -53,9 +54,11 @@ margin-left: 500px;
 
   return (
     <>
+    <Link to="/postingregister">
       <Button1>
         <button>독서모임 개설</button>
       </Button1>
+      </Link>
       <Postinginfo>
         <img
           src={"https://t1.daumcdn.net/cfile/tistory/2520CF4753E942C332"}

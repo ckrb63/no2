@@ -41,7 +41,7 @@ const StyledLink = styled(Link)`
 `;
 
 
-const links = ["/booklogs/list/like", "/", "/search", "/", "/","/mypage"];
+const links = ["/booklogs/list/like", "/postinglist", "/search", "/", "/","/mypage"];
 
 function Navigation({ isLogin }) {
   const menus = isLogin ? ["북로그", "독서모임", "책정보", "챌린지", "공지", "마이페이지"] : ["북로그", "독서모임", "책정보", "챌린지", "공지"];

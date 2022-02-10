@@ -27,7 +27,7 @@ function UserHeartBooklogContainer() {
       <div>
         <Link to="/booklogregister">
           <Button>
-            <button>저장</button>
+            {/* <button>저장</button> */}
           </Button>
         </Link>
         <Header>
