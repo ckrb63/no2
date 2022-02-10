@@ -42,61 +42,24 @@ function PostingRegisterContainer() {
       <Info>
         <h5>모임의 성격을 알려주세요!</h5>
         <h6>선택된 키워드에 맞게 자동으로 이미지가 생성됩니다.</h6>
-        <input id="선택지1" value="선택지1" name="platform" type="radio" />{" "}
-        선택지1
+        <input id="casual" value="casual" name="readingGroupType" type="radio" />{" "}
+        일상적인
         <input
-          id="선택지2"
-          value="선택지2"
-          name="platform"
+          id="professional"
+          value="professional"
+          name="readingGroupType"
           type="radio"
           style={{ marginLeft: 20 }}
         />{" "}
-        선택지2
+        전문적인
         <input
-          id="선택지3"
-          value="선택지3"
-          name="platform"
+          id="friendly"
+          value="friendly"
+          name="readingGroupType"
           type="radio"
           style={{ marginLeft: 20 }}
         />{" "}
-        선택지3
-        <input
-          id="선택지4"
-          value="선택지4"
-          name="platform"
-          type="radio"
-          style={{ marginLeft: 20 }}
-        />{" "}
-        선택지4
-        <br></br>
-        <input id="선택지5" value="선택지5" name="platform" type="radio" />{" "}
-        선택지5
-        <input
-          id="선택지6"
-          value="선택지6"
-          name="platform"
-          type="radio"
-          style={{ marginLeft: 20 }}
-        />{" "}
-        선택지6
-        <input
-          id="선택지7"
-          value="선택지7"
-          name="platform"
-          type="radio"
-          style={{ marginLeft: 20 }}
-        />{" "}
-        선택지7
-        <input
-          id="선택지8"
-          value="선택지8"
-          name="platform"
-          type="radio"
-          style={{ marginLeft: 20 }}
-          //   checked={this.state.selectValue === "Windows"}
-          //   onChange={this.handleChange}
-        />
-        선택지8
+        친근한
       </Info>
       <hr></hr>
       <Wrapper2>
@@ -121,7 +84,7 @@ function PostingRegisterContainer() {
         <input type="date" id="startDate" name="startDate"/> 부터
         <input type="date" id="endDate" name="endDate" style={{ marginLeft: 20 }}/> 까지
         <br></br>
-        주
+        {/* 주
         <select name = 'week'>
           <option value = "one">1회</option>
           <option value = "two">2회</option>
@@ -130,12 +93,12 @@ function PostingRegisterContainer() {
           <option value = "five">5회</option>
           <option value = "six">6회</option>
           <option value = "seven">7회</option>
-        </select>
-        <input id="월" value="월" name="platform" type="radio" style={{ marginLeft: 20 }}/> 월
+        </select> */}
+        <input id="월" value="월" name="days" type="radio" /> 월
         <input
           id="화"
           value="화"
-          name="platform"
+          name="days"
           type="radio"
           style={{ marginLeft: 20 }}
         />{" "}
@@ -143,7 +106,7 @@ function PostingRegisterContainer() {
         <input
           id="수"
           value="수"
-          name="platform"
+          name="days"
           type="radio"
           style={{ marginLeft: 20 }}
         />{" "}
@@ -151,7 +114,7 @@ function PostingRegisterContainer() {
         <input
           id="목"
           value="목"
-          name="platform"
+          name="days"
           type="radio"
           style={{ marginLeft: 20 }}
         />{" "}
@@ -159,7 +122,7 @@ function PostingRegisterContainer() {
         <input
           id="금"
           value="금"
-          name="platform"
+          name="days"
           type="radio"
           style={{ marginLeft: 20 }}
         />{" "}
@@ -167,7 +130,7 @@ function PostingRegisterContainer() {
         <input
           id="토"
           value="토"
-          name="platform"
+          name="days"
           type="radio"
           style={{ marginLeft: 20 }}
         />{" "}
@@ -175,12 +138,12 @@ function PostingRegisterContainer() {
         <input
           id="일"
           value="일"
-          name="platform"
+          name="days"
           type="radio"
           style={{ marginLeft: 20 }}
         />{" "}
         일<label>최대인원</label>
-        <select name = 'max'>
+        <select name = 'maxMember'>
           <option value = "three">3명</option>
           <option value = "four">4명</option>
           <option value = "five">5명</option>
@@ -193,6 +156,20 @@ function PostingRegisterContainer() {
 
         <label>모집 마감 날짜</label>
         <input type="date" id="deadline" name="deadline" />
+
+        <label>신청 자격 점수</label>
+        <select name = 'limitLevel'>
+        <option value = "one">1점</option>
+          <option value = "two">2점</option>
+          <option value = "three">3점</option>
+          <option value = "four">4점</option>
+          <option value = "five">5점</option>
+          <option value = "six">6점</option>
+          <option value = "seven">7점</option>
+          <option value = "eight">8점</option>
+          <option value = "nine">9점</option>
+          <option value = "ten">10점</option>
+        </select>
         <Button><button>저장</button></Button>
         
       </Wrapper2>
