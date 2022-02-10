@@ -7,8 +7,8 @@ const BookLog = styled.div`
   width: 100%;
   text-align: center;
 `;
-const Register = styled.div`
-  text-align: right;
+const Button = styled.div`
+  margin-left: 700px;
 `;
 const Header = styled.div`
   display: flex;
@@ -36,9 +36,7 @@ function UserBooklogList({
       <br></br>
       <div>
         <Link to="/booklogregister">
-          <Register>
-            <button>작성</button>
-          </Register>
+        <Button><button>저장</button></Button>
         </Link>
         <Header>
           <span>
