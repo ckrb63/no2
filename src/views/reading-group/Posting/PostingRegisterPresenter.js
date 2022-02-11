@@ -27,7 +27,10 @@ const Wrapper2 = styled.div`
 const Button = styled.div`
   margin-left: 600px;
 `;
+
 const url = "https://i6a305.p.ssafy.io:8443";
+
+
 
 function PostingRegisterPresenter({
   onTypeButtonHandler,
@@ -42,11 +45,13 @@ function PostingRegisterPresenter({
   onDeadLineChange,
   onLevelChange,
   submitHandler,
+  imgUrl,
 }) {
+  
   return (
     <Wrapper>
       <img
-        src={"https://t1.daumcdn.net/cfile/tistory/2520CF4753E942C332"}
+        src={imgUrl}
         height="150px"
         width="150px"
       ></img>

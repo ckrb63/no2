@@ -22,7 +22,6 @@ const SearchBook = (props) => {
     props.setbook(book);
     props.search(true);
   };
-
   const pageLoading = async () => {
     // console.log(enteredText.current.value);
     const books = await axios.post(url + `/api/v1/bookinfos`, {

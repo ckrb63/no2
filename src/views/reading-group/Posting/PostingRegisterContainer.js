@@ -14,8 +14,18 @@ function PostingRegisterContainer() {
   const [maximum, setMaximum] = useState(3);
   const [days, setDays] = useState([]);
   const [limitLevel, setLimitLevel] = useState(1);
-  const [readingGroupType, setReadingGroupType] = useState();
+  const [readingGroupType, setReadingGroupType] = useState("none");
   const jwtToken = JSON.parse(sessionStorage.getItem("jwtToken"));
+  let imgUrl;
+  if(readingGroupType==="none"){
+    imgUrl = "https://t1.daumcdn.net/cfile/tistory/2520CF4753E942C332";
+  }else if(readingGroupType==="casual"){
+    imgUrl = "https://vrthumb.imagetoday.co.kr/2020/11/24/td00920001996.jpg";
+  }else if(readingGroupType==="professional"){
+    imgUrl = "https://vrthumb.imagetoday.co.kr/2020/11/24/td00920001246.jpg";
+  }else{
+    imgUrl = "https://vrthumb.imagetoday.co.kr/2021/01/12/td00920002700.jpg";
+  }
   const onTypeButtonHandler = (event) => {
     setReadingGroupType(event.target.id);
   };
@@ -65,7 +75,8 @@ function PostingRegisterContainer() {
     } else if (startDate + 6 > endDate) {
       alert("독서모임 기간을 다시 설정해주세요.");
     } else {
-      const response = await axios
+      try{
+        const response = await axios
         .post(
           url + `/api/v1/reading-groups`,
           {
@@ -84,17 +95,24 @@ function PostingRegisterContainer() {
               Authorization: `Bearer ` + jwtToken,
             },
           }
-        )
-        .then(function (response) {
-          console.log(response.status);
-          if (response.status === 200) {
-            alert(response.data.data.msg);
-            // document.location.href = "/postinglist";
-          }
-          if (response.status === 500) {
-            alert("입력 내용을 확인해주세요.");
-          }
-        });
+        );
+        if(response.status === 200)
+          alert(response.data.data.msg);
+      }catch(e){
+        console.log(e)
+        alert("입력 내용을 확인해주세요.");
+      }
+      
+        // .then(function (response) {
+        //   console.log(response);
+        //   if (response.status === 200) {
+        //     alert(response.data.data.msg);
+        //     // document.location.href = "/postinglist";
+        //   }
+        //   if (response.status === 500) {
+        //     alert("입력 내용을 확인해주세요.");
+        //   }
+        // });
     }
   };
 
@@ -112,6 +130,7 @@ function PostingRegisterContainer() {
       onDeadLineChange={onDeadLineChange}
       onLevelChange={onLevelChange}
       submitHandler={submitHandler}
+      imgUrl={imgUrl}
     />
   );
 }
