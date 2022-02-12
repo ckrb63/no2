@@ -18,13 +18,15 @@ function PostingRegisterContainer() {
   const jwtToken = JSON.parse(sessionStorage.getItem("jwtToken"));
   let imgUrl;
   if(readingGroupType==="none"){
-    imgUrl = "https://t1.daumcdn.net/cfile/tistory/2520CF4753E942C332";
-  }else if(readingGroupType==="casual"){
-    imgUrl = "https://vrthumb.imagetoday.co.kr/2020/11/24/td00920001996.jpg";
-  }else if(readingGroupType==="professional"){
-    imgUrl = "https://vrthumb.imagetoday.co.kr/2020/11/24/td00920001246.jpg";
+    imgUrl = "https://img.freepik.com/free-vector/faq-frequently-asked-questions-with-team-people-and-sign-symbol-with-modern-isometric-style_82472-243.jpg?size=626&ext=jpg";
+  }else if(readingGroupType==="discuss"){
+    imgUrl = "https://vrthumb.imagetoday.co.kr/2020/11/24/td00920000317.jpg";
+  }else if(readingGroupType==="seminar"){
+    imgUrl = "https://vrthumb.imagetoday.co.kr/2020/11/24/td00920000076.jpg";
+  }else if(readingGroupType==="study"){
+    imgUrl = "https://vrthumb.imagetoday.co.kr/2020/11/24/td00920001759.jpg";
   }else{
-    imgUrl = "https://vrthumb.imagetoday.co.kr/2021/01/12/td00920002700.jpg";
+    imgUrl = "https://vrthumb.imagetoday.co.kr/2020/11/24/td00920001996.jpg";
   }
   const onTypeButtonHandler = (event) => {
     setReadingGroupType(event.target.id);
@@ -99,6 +101,7 @@ function PostingRegisterContainer() {
         if(response.status === 200)
           alert(response.data.data.msg);
       }catch(e){
+        console.log(e)
         alert("입력 내용을 확인해주세요.");
       }
       
