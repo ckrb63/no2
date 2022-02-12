@@ -99,7 +99,6 @@ function PostingRegisterContainer() {
         if(response.status === 200)
           alert(response.data.data.msg);
       }catch(e){
-        console.log(e)
         alert("입력 내용을 확인해주세요.");
       }
       
