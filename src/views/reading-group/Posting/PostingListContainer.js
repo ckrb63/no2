@@ -88,8 +88,8 @@ function PostingListContainer() {
           <Wrapper>
             <p className="title">{`제목 ${group.title}`}</p>
             <p className="content">{`날짜 ${group.startDate} ~ ${group.endDate}`}</p>
-            <p className="atmos">{`분위기 ${group.readingGroupType}`}</p>
-            <p className="atmos">{`모집마강 ${group.deadline}`}</p>
+            <p className="atmos">{`성격 ${group.readingGroupType}`}</p>
+            <p className="atmos">{`모집마감 ${group.deadline}`}</p>
             <p className="atmos">{`현재인원 ${group.participantSeqs.length}`}</p>
           </Wrapper>
         </Postinginfo>
