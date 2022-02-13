@@ -16,7 +16,6 @@ function PostingDetailContainer() {
   const jwtToken = JSON.parse(sessionStorage.getItem("jwtToken"));
   let isParticipated;
   const getPage = async () => {
-    console.log('asdasdasd');
     const response = await axios.get(url + `/api/v1/reading-groups/${readingGroupSeq}`, {
       headers: {
         Authorization: `Bearer ` + jwtToken,
@@ -33,7 +32,6 @@ function PostingDetailContainer() {
         },
       }
     );
-    console.log(response);
   };
   const cancelSubcription = async () => {
     const response = await axios.delete(
