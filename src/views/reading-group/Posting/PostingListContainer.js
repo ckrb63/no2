@@ -73,6 +73,7 @@ function PostingListContainer() {
         },
       }
     );
+    console.log(response);
     setTotalCnt(response.data.data.readingGroups.totalCnt);
     setGroups(response.data.data.readingGroups.readingGroupMiniDtos);
   };
@@ -83,11 +84,21 @@ function PostingListContainer() {
     getList();
   }, [page]);
   const groupList = groups.map((group) => {
+    let imgUrl;
+    if(group.readingGroupType==="discuss"){
+      imgUrl = "https://vrthumb.imagetoday.co.kr/2020/11/24/td00920000317.jpg";
+    }else if(group.readingGroupType==="seminar"){
+      imgUrl = "https://vrthumb.imagetoday.co.kr/2020/11/24/td00920000076.jpg";
+    }else if(group.readingGroupType==="study"){
+      imgUrl = "https://vrthumb.imagetoday.co.kr/2020/11/24/td00920001759.jpg";
+    }else{
+      imgUrl = "https://vrthumb.imagetoday.co.kr/2020/11/24/td00920001996.jpg";
+    }
     return (
-      <StyledLink to="/postingregister" key={group.readingGroupSeq}>
+      <StyledLink to="/postingdetail" key={group.readingGroupSeq} state={{ logSeq: group.readingGroupSeq }}>
         <Postinginfo>
           <img
-            src={"https://t1.daumcdn.net/cfile/tistory/2520CF4753E942C332"}
+            src={imgUrl}
             height="100px"
             width="100px"
           ></img>
