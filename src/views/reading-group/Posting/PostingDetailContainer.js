@@ -13,6 +13,7 @@ function PostingDetailContainer() {
   const jwtToken = JSON.parse(sessionStorage.getItem("jwtToken"));
   let isParticipated;
   const getPage = async () => {
+    console.log('asdasdasd');
     const response = await axios.get(url + `/api/v1/reading-groups/3054`, {
       headers: {
         Authorization: `Bearer ` + jwtToken,
