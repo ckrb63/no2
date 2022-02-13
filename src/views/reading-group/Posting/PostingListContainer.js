@@ -50,7 +50,13 @@ const Wrapper = styled.div`
 const Button1 = styled.div`
   margin-left: 720px;
 `;
+const StyledLink = styled(Link)`
+    text-decoration: none;
 
+    &:focus, &:hover, &:visited, &:link, &:active {
+        text-decoration: none;
+    }
+`;
 const url = "https://i6a305.p.ssafy.io:8443";
 
 function PostingListContainer() {
@@ -78,7 +84,7 @@ function PostingListContainer() {
   }, [page]);
   const groupList = groups.map((group) => {
     return (
-      <Link to="/postingregister" key={group.readingGroupSeq}>
+      <StyledLink to="/postingregister" key={group.readingGroupSeq}>
         <Postinginfo>
           <img
             src={"https://t1.daumcdn.net/cfile/tistory/2520CF4753E942C332"}
@@ -93,7 +99,7 @@ function PostingListContainer() {
             <p className="atmos">{`현재인원 ${group.participantSeqs.length}`}</p>
           </Wrapper>
         </Postinginfo>
-      </Link>
+      </StyledLink>
     );
   });
   return (
