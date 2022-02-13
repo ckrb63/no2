@@ -33,11 +33,11 @@ const HR = styled.div`
   margin-right: 130px;
 `;
 const Items = styled.div`
-  display : inline-block;
-  margin : 0 .2rem;
-  padding : 0 .4rem;
-  border : 1px solid #777;
-  
+  display: inline-block;
+  margin: 0 0.2rem;
+  padding: 0 0.4rem;
+  border: 1px solid #777;
+
   border-radius: 1.5rem;
   text-align: center;
 `;
@@ -57,20 +57,31 @@ function PostingDetailPresenter({
     group.readingGroupType = "자유형";
   }
   let korDays;
-  if(group.days){
-    korDays = group.days.map((day)=>{
-      if(day==='MON') return <Items key={'mon'}>월요일</Items>;
-      else if(day==='TUE') return <Items key={'tue'}>화요일</Items>;
-      else if(day==='WED') return <Items key={'wed'}>수요일</Items>;
-      else if(day==='THU') return <Items key={'thu'}>목요일</Items>;
-      else if(day==='FRI') return <Items key={'fri'}>금요일</Items>;
-      else if(day==='SAT') return <Items key={'sat'}>토요일</Items>;
-      else return <Items key={'sun'}>일요일</Items>;
+  if (group.days) {
+    korDays = group.days.map((day) => {
+      if (day === "MON") return { days: "월요일", value: 1 };
+      else if (day === "TUE") return { days: "화요일", value: 2 };
+      else if (day === "WED") return { days: "수요일", value: 3 };
+      else if (day === "THU") return { days: "목요일", value: 4 };
+      else if (day === "FRI") return { days: "금요일", value: 5 };
+      else if (day === "SAT") return { days: "토요일", value: 6 };
+      else return { days: "일요일", value: 7 };
     });
-  }else{
-    korDays = <div></div>
   }
+  if(korDays){
+  korDays.sort(function (a, b) {
+    return a.value - b.value;
+  });}
+  if (korDays) {
+    korDays = korDays.map((day) => {
+      return <Items key={day.days}>{day.days}</Items>
+    });
+  } else {
+    korDays = [];
+  }
+
   
+
   return (
     <Wrapper>
       <Wrapper2>
@@ -118,7 +129,15 @@ function PostingDetailPresenter({
           </tr>
           <tr>
             <td>독서모임 신청명단</td>
-            <td>{group.participants ? group.participants.map((p)=>{return <Items key={p}>{p}</Items>}) : <div></div>}</td>
+            <td>
+              {group.participants ? (
+                group.participants.map((p) => {
+                  return <Items key={p}>{p}</Items>;
+                })
+              ) : (
+                <div></div>
+              )}
+            </td>
             {/* <td>{group.participants}</td> */}
           </tr>
           <tr>
